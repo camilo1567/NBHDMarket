@@ -14,7 +14,7 @@
                       <p class="mb-0">Ingresa tu email y contraseña para iniciar sesion</p>
                     </div>
                     <div class="flex-auto p-6">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login') }}" novalidate="novalidate">
                          @csrf
 
                             <div class="mb-4">
@@ -65,6 +65,6 @@
             </div>
           </div>
         </section>
-      </main>
+    </main>
 
 </x-guest-layout>
