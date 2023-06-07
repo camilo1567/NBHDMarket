@@ -14,10 +14,15 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+    <body class="flex font-sans antialiased">
 
-            @include('layouts.navigation')
+        <div class="sm:hidden md:block w-[300px] bg-blue-400">
+            @include('elements.sidebar')
+        </div>
+
+        <div class="min-h-screen w-full bg-gray-100">
+
+            @include('elements.navigation')
 
         </div>
     </body>

@@ -1,10 +1,19 @@
-<nav class="bg-white">
+<nav class="bg-white py-3">
     <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
+        <!-- Hamburger button -->
+        <button class="text-slate-500 hover:text-slate-600 lg:hidden" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen" aria-expanded="false">
+            <span class="sr-only">Open sidebar</span>
+            <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <rect x="4" y="5" width="16" height="2"></rect>
+                <rect x="4" y="11" width="16" height="2"></rect>
+                <rect x="4" y="17" width="16" height="2"></rect>
+            </svg>
+        </button>
         <nav>
             <!-- breadcrumb -->
             <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                 <li class="text-sm leading-normal">
-                <a class="opacity-50 text-slate-700" href="#">Pages</a>
+                    <a class="opacity-50 text-slate-700" href="#">Pages</a>
                 </li>
                 <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
             </ol>
