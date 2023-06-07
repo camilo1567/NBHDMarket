@@ -38,7 +38,7 @@
                             <div class="block mt-4">
                                 <label for="remember_me" class="inline-flex items-center">
                                     <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                                    <span class="ml-2 text-sm text-gray-600">{{ __('Recordar') }}</span>
                                 </label>
                             </div>
 
@@ -48,10 +48,16 @@
                         </form>
                     </div>
                     <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
-                      <p class="mx-auto mb-6 leading-normal text-sm">
-                        No tienes ninguna cuenta aun?
-                        <a href="{{ route('register') }}" class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text">Registrarse</a>
-                      </p>
+                        <p class="mx-auto mb-6 leading-normal text-sm">
+                            No tienes ninguna cuenta aun?
+                            <a href="{{ route('register') }}" class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text">Registrarse</a>
+                        </p>
+
+                        @if (Route::has('password.request'))
+                            <a class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text" href="{{ route('password.request') }}">
+                                {{ __('¿Olvidaste tu contraseña?') }}
+                            </a>
+                        @endif
                     </div>
                   </div>
                 </div>
