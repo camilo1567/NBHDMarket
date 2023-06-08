@@ -25,5 +25,8 @@
             @include('elements.navigation')
 
         </div>
+
+        @yield('content')
+
     </body>
 </html>
