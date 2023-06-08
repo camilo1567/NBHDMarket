@@ -6,6 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+        <link rel="shortcut icon" href="{{ asset('img/marketplace/logo_marketplace.png') }}" />
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -13,6 +14,8 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @yield('head')
     </head>
     <body class="flex font-sans antialiased">
 
@@ -24,9 +27,11 @@
 
             @include('elements.navigation')
 
+            @yield('content')
+
+
         </div>
 
-        @yield('content')
-
+        @yield('scripts')
     </body>
 </html>
