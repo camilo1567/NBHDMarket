@@ -15,9 +15,9 @@
                 <li class="text-sm leading-normal">
                     <a class="opacity-50 text-slate-700" href="#">Pages</a>
                 </li>
-                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">Dashboard</li>
+                <li class="text-sm pl-2 capitalize leading-normal text-slate-700 before:float-left before:pr-2 before:text-gray-600 before:content-['/']" aria-current="page">{{ $titulo }}</li>
             </ol>
-            <h6 class="mb-0 font-bold capitalize">Dashboard</h6>
+            <h6 class="mb-0 font-bold capitalize">{{ $titulo }}</h6>
         </nav>
 
         <div class="flex flex-row items-center justify-end gap-2 pl-0 mb-0 list-none md-max:w-full text-slate-500">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Superadmin\SuperadminController;
+use App\Http\Controllers\Superadmin\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('superadmin.')->group(function () {
+
     Route::get('/dashboard',[SuperadminController::class, 'index'])->name('dashboard');
+
+    Route::resource('users',UserController::class);
+
 });
 

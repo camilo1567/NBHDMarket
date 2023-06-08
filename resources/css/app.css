@@ -31,3 +31,11 @@
 .sidebar-text{
     @apply ml-1 duration-300 opacity-100 pointer-events-none;
 }
+
+.btn-primary{
+    @apply flex items-center gap-1 justify-start p-2 font-bold text-center text-white bg-blue-200 hover:bg-blue-300 rounded-lg;
+}
+
+.btn-new{
+    @apply gap-1 justify-end p-2 font-bold text-center text-white bg-green-200 hover:bg-green-300 rounded-lg;
+}
