@@ -16,7 +16,7 @@
     </head>
     <body class="flex font-sans antialiased">
 
-        <div class="sm:hidden md:block w-[300px] bg-blue-400">
+        <div class="hidden md:block w-[300px] bg-blue-400">
             @include('elements.sidebar')
         </div>
 

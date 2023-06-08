@@ -12,3 +12,22 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+.sidebar-item-used{
+    @apply flex items-center gap-2 p-2 bg-white rounded-lg m-3;
+}
+
+.sidebar-item{
+    @apply flex items-center gap-2 p-2 rounded-lg m-3 hover:bg-gray-300;
+}
+
+.sidebar-icon-used{
+    @apply text-white bg-gradient-to-tl from-purple-700 h-8 w-8 to-pink-500 mr-2 flex items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2;
+}
+
+.sidebar-icon{
+    @apply mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2;
+}
+
+.sidebar-text{
+    @apply ml-1 duration-300 opacity-100 pointer-events-none;
+}

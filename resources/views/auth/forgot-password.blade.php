@@ -1,7 +1,7 @@
 <x-guest-layout>
 
     <div class="flex justify-center items-center bg-gray-100 h-screen">
-        <div class="p-10 w-1/2 bg-white">
+        <div class="p-10 md:w-1/2 bg-white">
             <div class="mb-4 text-sm text-gray-600">
                 {{ __('¿Olvidaste tu contraseña? Ningún problema. Simplemente háganos saber su dirección de correo electrónico y le enviaremos un enlace de restablecimiento de contraseña que le permitirá elegir una nueva.') }}
             </div>
