@@ -20,15 +20,18 @@
     <body class="flex font-sans antialiased">
 
         <div class="hidden md:block w-[300px] bg-blue-400">
-            @include('elements.sidebar')
+            @include('elements.superadmin.sidebar')
         </div>
 
         <div class="min-h-screen w-full bg-gray-100">
 
-            @include('elements.navigation')
+            @include('elements.superadmin.navigation')
 
-            @yield('content')
+            <div class="p-4">
 
+                @yield('content')
+
+            </div>
 
         </div>
 
