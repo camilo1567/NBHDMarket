@@ -36,6 +36,7 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'rol' => 'required|integer|between:1,2'
         ]);
 
         $user = User::create([
@@ -43,6 +44,18 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+
+        if($request->rol == 1){
+
+            $user->assignRole('negocio');
+
+        }
+
+        if($request->rol == 2){
+
+            $user->assignRole('cliente');
+
+        }
 
         event(new Registered($user));
 

@@ -23,6 +23,30 @@ class UserController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+    */
+    public function clientIndex()
+    {
+        $users = User::role('cliente')->get();
+
+        $data = compact('users');
+
+        return view('superadmin.users.index', $data);
+    }
+
+        /**
+     * Display a listing of the resource.
+    */
+    public function negocioIndex()
+    {
+        $users = User::role('negocio')->get();
+
+        $data = compact('users');
+
+        return view('superadmin.users.index', $data);
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -98,27 +122,6 @@ class UserController extends Controller
             $this->validate($request,[
                 'password' => 'required|string|min:8|max:255|confirmed',
             ]);
-
-        }
-
-        if($request->rol != 0){
-
-            $this->validate($request,[
-                'rol' => 'required|integer|between:1,2',
-            ]);
-
-        }
-
-        if($request->rol == 1){
-
-            $user->removeRole('cliente');
-            $user->assignRole('negocio');
-
-        }
-        if($request->rol == 2){
-
-            $user->removeRole('negocio');
-            $user->assignRole('cliente');
 
         }
 

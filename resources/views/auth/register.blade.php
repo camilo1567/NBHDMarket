@@ -12,7 +12,7 @@
                       <p class="mb-0">Ingresa tu nombre, email y contraseña para registrarte</p>
                     </div>
                     <div class="flex-auto p-6">
-                        <form method="POST" action="{{ route('login') }}" novalidate="novalidate">
+                        <form method="POST" action="{{ route('register') }}" novalidate="novalidate">
                          @csrf
 
                             <!-- Name -->
@@ -50,6 +50,15 @@
                                                 name="password_confirmation"  autocomplete="new-password" />
 
                                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            </div>
+
+                            <div class="mt-4">
+
+                                <x-input-label for="rol" :value="__('Tipo de Usuario')" />
+
+                                <div class="mt-1">
+                                    {{ Aire::select(['0' => 'Escoger','1' => 'Negocio','2' => 'Cliente'],'rol') }}
+                                </div>
                             </div>
 
                             <x-primary-button class="text-center">

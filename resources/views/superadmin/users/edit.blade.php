@@ -53,16 +53,6 @@
 
         </div>
 
-        @if ($user->roles[0]->name != 'superadmin')
-
-            <div>
-                <div class="md:w-1/2">
-                    {{ Aire::select(['0' => 'Escoger', '1' => 'Negocio','2' => 'Cliente'],'rol','Rol')->value($user->roles[0]->name) }}
-                </div>
-            </div>
-
-        @endif
-
         <div class="flex justify-end py-2">
             {{ Aire::submit('Editar')->class('btn-new') }}
         </div>
