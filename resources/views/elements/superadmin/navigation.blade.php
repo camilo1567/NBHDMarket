@@ -1,6 +1,59 @@
-<nav class="bg-white py-3">
+<nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+    <div class="px-3 py-3 lg:px-5 lg:pl-3">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center justify-start">
+                <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
+                    <span class="sr-only">Open sidebar</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+                    </svg>
+                </button>
+                <a href="{{ route('dashboard') }}" class="flex ml-2 md:mr-24">
+                    <img src="{{ asset('img/marketplace/logo_marketplace.png') }}" class="w-[45px] h-[45px]" alt="NBHDMarket Logo" />
+                    <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">NBHDMarket</span>
+                </a>
+            </div>
+            <div class="flex items-center">
+                <div class="flex items-center ml-3">
+                    <div>
+                        <button type="button" class="flex text-sm bg-gray-100 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" aria-expanded="false" data-dropdown-toggle="dropdown-user">
+                        <span class="sr-only">Open user menu</span>
+                            <img class="w-8 h-8 rounded-full" src="{{ asset('img/marketplace/logo_marketplace.png') }}" alt="logo">
+                        </button>
+                    </div>
+                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600" id="dropdown-user">
+                        <div class="px-4 py-3" role="none">
+                            <p class="text-sm text-gray-900 dark:text-white" role="none">
+                                {{Auth::user()->name }}
+                            </p>
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-gray-300" role="none">
+                                {{Auth::user()->email }}
+                            </p>
+                        </div>
+                        <ul class="py-1" role="none">
+                            <li>
+                                <a href="{{ route('dashboard') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Ajustes</a>
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">
+                                    @csrf
+                                    <a onclick="event.preventDefault(); this.closest('form').submit();">Cerrar Sesion</a>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!--<nav class="bg-white py-3">
     <div class="flex items-center justify-between w-full px-4 py-1 mx-auto flex-wrap-inherit">
-        <!-- Hamburger button -->
+
         <button class="text-slate-500 hover:text-slate-600 lg:hidden" @click.stop="sidebarOpen = !sidebarOpen" aria-controls="sidebar" :aria-expanded="sidebarOpen" aria-expanded="false">
             <span class="sr-only">Open sidebar</span>
             <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -10,7 +63,7 @@
             </svg>
         </button>
         <nav>
-            <!-- breadcrumb -->
+
             <ol class="flex flex-wrap pt-1 mr-12 bg-transparent rounded-lg sm:mr-16">
                 <li class="text-sm leading-normal">
                     <a class="opacity-50 text-slate-700" href="#">Pages</a>
@@ -21,7 +74,7 @@
         </nav>
 
         <div class="flex flex-row items-center justify-end gap-2 pl-0 mb-0 list-none md-max:w-full text-slate-500">
-            <!-- User Area -->
+
             <div class="relative" x-data="{ dropdownOpen: false }" @click.outside="dropdownOpen = false">
                 <a class="flex items-center gap-4" href="#" @click.prevent="dropdownOpen = ! dropdownOpen">
                 <span class="hidden lg:block text-right">
@@ -54,7 +107,7 @@
                 </svg>
                 </a>
 
-                <!-- Dropdown Start -->
+
                 <div x-show="dropdownOpen"
                 class="flex flex-col shadow-default rounded-sm border border-stroke dark:border-strokedark bg-white dark:bg-boxdark w-[200px] absolute right-0 mt-4">
 
@@ -83,10 +136,10 @@
                     </form>
                 </button>
                 </div>
-                <!-- Dropdown End -->
+
             </div>
-            <!-- User Area -->
+
         </div>
     </div>
-</nav>
+</nav>-->
 

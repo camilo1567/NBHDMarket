@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class DataFilledMiddleWare
@@ -15,6 +16,13 @@ class DataFilledMiddleWare
      */
     public function handle(Request $request, Closure $next): Response
     {
+
+        $user = Auth::user();
+
+        if ($user && $user->data_filled == 1) {
+             return redirect()->route('user.edit', $user);
+        }
+
         return $next($request);
     }
 }
