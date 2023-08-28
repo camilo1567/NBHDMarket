@@ -25,7 +25,8 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::get('/clientes',[UserController::class,'clientIndex'])->name('users.clientes');
     Route::get('/negocios',[UserController::class,'negocioIndex'])->name('users.negocios');
 
-
+    Route::get('/ajustes',[SuperadminController::class,'settings'])->name('ajustes');
+    Route::put('/ajustes',[SuperadminController::class,'updateSettings'])->name('ajustes.update');
 
 });
 

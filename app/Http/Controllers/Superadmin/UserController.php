@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 use App\Models\User;
+use App\Models\UserSetting;
 
 class UserController extends Controller
 {
@@ -83,6 +84,10 @@ class UserController extends Controller
             $user->assignRole('cliente');
 
         }
+
+        UserSetting::create([
+            'user_id' => $user->id,
+        ]);
 
         return redirect()
             ->route('superadmin.users.index')
