@@ -6,29 +6,39 @@
 
 @section('content')
 
+<div class="flex flex-wrap mt-2">
+    <div class="flex-none w-full max-w-full bg-white p-2 rounded-lg">
 
+        <div class="md:flex items-center justify-between py-2">
 
-<div class="flex flex-wrap">
-    <div class="flex-none w-full max-w-full">
+            @if (request()->routeIs('superadmin.users.index') )
+                <div class="py-2">
+                    <div class="flex justify-start">
+                        <a href="{{ route('superadmin.users.create') }}" class="btn-primary">
 
-        @if (request()->routeIs('superadmin.users.index') )
-            <div class="py-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
+                            </svg>
 
-                <div class="flex justify-start">
-                    <a href="{{ route('superadmin.users.create') }}" class="btn-primary">
+                            Nuevo
 
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                        </svg>
-
-                        Nuevo
-
-                    </a>
+                        </a>
+                    </div>
                 </div>
+            @endif
 
-
-            </div>
-        @endif
+            <form class="w-full md:w-[70%]" method="GET">
+                <div class="relative">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+                        </svg>
+                    </div>
+                    <input value='{{ request()->q }}' name="q" class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Buscar por Nombre o Email...">
+                    <button type="submit" class="text-white absolute right-2.5 bottom-2.5 bg-blue-200 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                </div>
+            </form>
+        </div>
 
         <div class="flex flex-col bg-white rounded-lg">
 
@@ -89,6 +99,10 @@
                             @endforeach
                         </tbody>
                     </table>
+
+                    <div class="p-2">
+                        {{ $users->links()  }}
+                    </div>
                 </div>
             </div>
 

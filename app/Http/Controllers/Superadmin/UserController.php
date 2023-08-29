@@ -14,9 +14,16 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::all();
+        //$users = User::all();
+
+        $users = User::when($request->filled('q'), function ($q) use ($request){
+
+                $q->where('name', 'LIKE', "%".$request->q."%" )
+                ->orWhere('email', 'LIKE', "%".$request->q."%");
+
+        })->paginate(15);
 
         $data = compact('users');
 
@@ -26,9 +33,14 @@ class UserController extends Controller
     /**
      * Display a listing of the resource.
     */
-    public function clientIndex()
+    public function clientIndex(Request $request)
     {
-        $users = User::role('cliente')->get();
+        $users = User::role('cliente')->when($request->filled('q'), function ($q) use ($request){
+
+            $q->where('name', 'LIKE', "%".$request->q."%" )
+            ->orWhere('email', 'LIKE', "%".$request->q."%");
+
+        })->paginate(15);
 
         $data = compact('users');
 
@@ -38,9 +50,14 @@ class UserController extends Controller
         /**
      * Display a listing of the resource.
     */
-    public function negocioIndex()
+    public function negocioIndex(Request $request)
     {
-        $users = User::role('negocio')->get();
+        $users = User::role('negocio')->when($request->filled('q'), function ($q) use ($request){
+
+            $q->where('name', 'LIKE', "%".$request->q."%" )
+            ->orWhere('email', 'LIKE', "%".$request->q."%");
+
+        })->paginate(15);
 
         $data = compact('users');
 
