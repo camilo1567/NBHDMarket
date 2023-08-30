@@ -66,7 +66,7 @@
                                     </td>
 
                                     <td class="px-6 py-3 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                    {{ $user->roles[0]->name }}
+                                        {{ $user->roles[0]->name }}
                                     </td>
 
                                     <td class="px-6 py-3 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">

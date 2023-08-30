@@ -96,11 +96,10 @@ return [
 	| See default-theme.php for a full example of configuring class names.
 	|
 	*/
-	'default_classes' =>  [
-        'input' => 'focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow h-10',
-        'select' => 'focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow h-10',
-        'textarea' => 'focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block md:w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:outline-none focus:transition-shadow',
-        'label' => 'block text-sm font-medium',
+	'default_classes' => [
+        'input'=> 'border border-gray-300 text-gray-900 sm:text-sm rounded focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5',
+        'checkbox'=> 'border border-gray-300',
+        'select'=> 'border border-gray-300 text-gray-900 sm:text-sm rounded focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5',
     ],
 
 	/*
@@ -174,7 +173,9 @@ return [
 		| See default-theme.php for a full example of configuring class names.
 		|
 		*/
-		'invalid' => [],
+		'invalid' => [
+            'group_errors'=>'text-red-500'
+        ],
 	],
 
 ];

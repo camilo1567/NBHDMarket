@@ -37,7 +37,7 @@
 
                     </div>
                     <div class="flex justify-center text-sm">
-                        {{ Aire::file('image')->class('') }}
+                        {{ Aire::file('image')->class('w-full') }}
                     </div>
                 </div>
 
@@ -141,9 +141,9 @@
 
             <section class="py-2 border-b">
 
-                <h2 class="text-lg text-black font-bold">About</h2>
+                <h2 class="text-lg text-black font-bold">Sobre mi</h2>
 
-                {{ Aire::textarea('about')->value($settings->descripcion) }}
+                {{ Aire::textarea('descripcion')->class('w-full')->value($settings->descripcion) }}
 
             </section>
 

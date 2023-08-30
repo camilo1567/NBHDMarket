@@ -25,6 +25,12 @@ return new class extends Migration
             $table->string('twitter')->nullable();
             $table->string('whatsapp')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')
+                    ->references('id')
+                    ->on('users')
+                    ->cascadeOnDelete()
+                    ->cascadeOnUpdate();
         });
     }
 
