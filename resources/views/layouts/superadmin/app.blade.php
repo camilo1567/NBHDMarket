@@ -50,7 +50,9 @@
                         </div>
                     @endif
 
-                    @yield('content')
+                    <div class="mt-2">
+                        @yield('content')
+                    </div>
 
                 </div>
             </div>

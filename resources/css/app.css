@@ -59,3 +59,31 @@
 .label-edit{
     @apply block font-medium mb-1;
 }
+
+.table-template{
+    @apply items-center w-full  align-top border-gray-200 text-slate-500;
+}
+
+.table-template thead{
+    @apply align-bottom;
+}
+
+.th-template{
+    @apply px-6 py-3 font-bold uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-sm whitespace-nowrap text-slate-400 opacity-70;
+}
+
+.td-template{
+    @apply px-6 py-3 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent;
+}
+
+.container-template{
+    @apply flex-none w-full max-w-full bg-white p-2 rounded-lg;
+}
+
+.container-table{
+    @apply flex flex-col bg-white rounded-lg;
+}
+
+.container-table-div{
+    @apply p-0 overflow-x-auto;
+}

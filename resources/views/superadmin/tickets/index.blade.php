@@ -6,22 +6,16 @@
 
 @section('content')
 
-<div class="flex flex-wrap mt-2">
+<div class="flex flex-wrap ">
     <div class="flex-none w-full max-w-full bg-white p-2 rounded-lg">
 
         <div class="py-2">
 
-                <div class="flex justify-start">
+                {{-- <div class="flex justify-start">
                     <a href="{{ route('superadmin.tickets.create') }}" class="btn-primary">
-
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                            <path fill-rule="evenodd" d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z" clip-rule="evenodd" />
-                        </svg>
-
                         Nuevo
-
                     </a>
-                </div>
+                </div> --}}
                 <form method="get" class="flex items-center justify-between">
 
                     <div class="">

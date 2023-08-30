@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Category::all();
+
+        return view('superadmin.categories.index', compact('categories'));
     }
 
     /**
@@ -20,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('superadmin.categories.create');
     }
 
     /**
@@ -28,7 +31,15 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|unique:categories,nombre|string|max:255',
+        ]);
+
+        Category::create([
+            'nombre' => $request->nombre,
+        ]);
+
+        return redirect()->route('superadmin.categories.index')->with('success', 'Categoria creada con éxito');
     }
 
     /**
@@ -42,24 +53,36 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        $data = compact('category');
+
+        return view('superadmin.categories.edit', $data);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $this->validate($request, [
+            'nombre' => 'required|unique:categories,nombre,'.$category->id.'|string|max:255',
+        ]);
+
+        $category->update([
+            'nombre' => $request->nombre,
+        ]);
+
+        return redirect()->route('superadmin.categories.index')->with('success', 'Categoria actualizada con éxito');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('superadmin.categories.index')->with('success', 'Categoria eliminada con éxito');
     }
 }
