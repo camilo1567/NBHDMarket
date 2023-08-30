@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Superadmin\CategoryController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
 use App\Http\Controllers\Superadmin\UserController;
@@ -23,6 +24,7 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
 
     Route::resource('users',UserController::class);
     Route::resource('tickets',TicketController::class);
+    Route::resource('categories',CategoryController::class);
 
     Route::get('/clientes',[UserController::class,'clientIndex'])->name('users.clientes');
     Route::get('/negocios',[UserController::class,'negocioIndex'])->name('users.negocios');

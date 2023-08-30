@@ -11,7 +11,7 @@
 
         <div class="py-2">
 
-                {{-- <div class="flex justify-start">
+                <div class="flex justify-start">
                     <a href="{{ route('superadmin.tickets.create') }}" class="btn-primary">
 
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
@@ -21,13 +21,13 @@
                         Nuevo
 
                     </a>
-                </div> --}}
+                </div>
                 <form method="get" class="flex items-center justify-between">
 
                     <div class="">
-                        {{ Aire::select([4 => 'Todos',0 => 'Abierto', 1 => 'Pendiente', 2 => 'En progreso', 3 => 'Cerrado'], 'q','Estado')->name('q')->value(request('q')) }}
+                        {{ Aire::select([4 => 'Todos',0 => 'Abierto', 1 => 'Pendiente', 2 => 'En progreso', 3 => 'Cerrado'], 'q','Tickets')->name('q')->value(request('q')) }}
                     </div>
-                    <button class="btn-primary mt-3" type="submit">
+                    <button class="btn-new mt-3" type="submit">
                         Buscar
                     </button>
                 </form>

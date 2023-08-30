@@ -17,7 +17,7 @@ return new class extends Migration
             $table->longText('descripcion');
             $table->string('asunto');
             $table->string('file')->nullable();
-            $table->longText('response')->nullable();
+            $table->longText('respuesta')->nullable();
             $table->integer('status')->default(0);
             $table->timestamps();
 

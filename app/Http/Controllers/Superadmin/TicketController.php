@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Ticket;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -94,13 +95,19 @@ class TicketController extends Controller
     public function update(Request $request, Ticket $ticket)
     {
 
+        $today = Carbon::now();
+
         if($request->status == 3){
             $this->validate($request,[
-                'response' => 'required|string|max:255',
+                'respuesta' => 'required|string|max:255',
                 'status' => 'required|numeric',
             ]);
 
-            $ticket->update(['response' => $request->response,'status' => $request->status]);
+            $ticket->update([
+                'respuesta' => $request->respuesta,
+                'status' => $request->status,
+                'fecha_cierre' => $today
+            ]);
         }
 
         if($request->status < 3){

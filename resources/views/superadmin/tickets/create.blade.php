@@ -29,7 +29,7 @@
                 {{ Aire::input('asunto') }}
             </div>
             <div class="mb-4">
-                <label for="descripcion" class="label-edit">Mensaje:</label>
+                <label for="descripcion" class="label-edit">Descripcion:</label>
                 {{ Aire::textarea('descripcion')->class('w-full') }}
             </div>
             <div class="mb-4">

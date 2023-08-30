@@ -14,8 +14,9 @@ class Ticket extends Model
         'descripcion',
         'asunto',
         'file',
-        'response',
-        'status'
+        'respuesta',
+        'status',
+        'fecha_cierre'
     ];
 
     public function user()

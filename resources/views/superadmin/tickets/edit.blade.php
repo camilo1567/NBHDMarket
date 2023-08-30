@@ -36,16 +36,18 @@
 
         {{ Aire::open()->route('superadmin.tickets.update',$ticket) }}
 
-            <div class="flex justify-end py-2 gap-2">
-                {{ Aire::submit('En Progreso')->class('btn-warning')->name('status')->value(2) }}
-                {{ Aire::submit('Pendiente')->class('btn-secondary')->name('status')->value(1) }}
-            </div>
+            @if ($ticket->status != 3)
+                <div class="flex justify-end py-2 gap-2">
+                    {{ Aire::submit('En Progreso')->class('btn-warning')->name('status')->value(2) }}
+                    {{ Aire::submit('Pendiente')->class('btn-secondary')->name('status')->value(1) }}
+                </div>
+            @endif
 
             <div class="mb-4">
-                <label for="response" class="label-edit">Responder:</label>
-                {{ Aire::textarea('response')
+                <label for="respuesta" class="label-edit">{{ $ticket->status == 3 ? 'Respuesta:' : 'Responder:' }}</label>
+                {{ Aire::textarea('respuesta')
                     ->class('w-full ' . ($ticket->status == 3 ? 'bg-slate-100 text-slate-300' : ''))
-                    ->value($ticket->response)
+                    ->value($ticket->respuesta)
                     ->disabled($ticket->status == 3 ? true : false) }}
             </div>
 
