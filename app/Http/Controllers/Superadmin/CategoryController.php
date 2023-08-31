@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Superadmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -35,9 +36,13 @@ class CategoryController extends Controller
             'nombre' => 'required|unique:categories,nombre|string|max:255',
         ]);
 
-        Category::create([
+        $category = Category::create([
             'nombre' => $request->nombre,
         ]);
+
+        // Subcategory::create([
+        //     'category_id' => $category->id
+        // ]);
 
         return redirect()->route('superadmin.categories.index')->with('success', 'Categoria creada con éxito');
     }

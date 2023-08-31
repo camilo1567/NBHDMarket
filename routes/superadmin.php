@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Superadmin\CategoryController;
+use App\Http\Controllers\Superadmin\SubcategoryController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
 use App\Http\Controllers\Superadmin\UserController;
@@ -25,6 +26,15 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('users',UserController::class);
     Route::resource('tickets',TicketController::class);
     Route::resource('categories',CategoryController::class);
+
+    Route::get('/categorias/{category}/index',[SubcategoryController::class,'index'])->name('subcategories.index');
+    Route::get('/categorias/{category}/create',[SubcategoryController::class,'create'])->name('subcategories.create');
+    Route::post('/categorias/{category}/store',[SubcategoryController::class,'store'])->name('subcategories.store');
+    Route::get('/categorias/{category}/edit/{subcategory}',[SubcategoryController::class,'edit'])->name('subcategories.edit');
+    Route::put('/categorias/{category}/update/{subcategory}',[SubcategoryController::class,'update'])->name('subcategories.update');
+    Route::delete('/categorias/{category}/destroy/{subcategory}',[SubcategoryController::class,'destroy'])->name('subcategories.destroy');
+
+    // Route::resource('categories/{category}/subcategories',CategoryController::class);
 
     Route::get('/clientes',[UserController::class,'clientIndex'])->name('users.clientes');
     Route::get('/negocios',[UserController::class,'negocioIndex'])->name('users.negocios');
