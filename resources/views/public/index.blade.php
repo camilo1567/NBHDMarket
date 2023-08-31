@@ -1,5 +1,19 @@
 @extends('layouts.public.app')
 
+@section('head')
+
+<style>
+    .swiper-slide {
+        transform: translateX(0); /* Initial position */
+    }
+
+    [x-show*="currentImage"] .swiper-slide {
+        transform: translateX(-100%); /* Slide left */
+    }
+</style>
+
+@endsection
+
 @section('content')
 
 <div class="container mx-auto lg:px-4 px-4">
@@ -18,13 +32,13 @@
                     this.currentImage = (this.currentImage + 1) % this.images.length;
                 }, 11000);
             }
-        }" x-init="startCarousel()" class="p-2">
+        }" x-init="startCarousel()" class="px-2">
         <div class="relative">
             <div class="swiper-container">
                 <div class="swiper-wrapper">
                     <template x-for="(image, index) in images" :key="index">
-                        <div x-show="currentImage === index" class="swiper-slide flex justify-center transition-opacity duration-500 ease-in">
-                            <img :src="image.src" :alt="image.alt" class="md:h-[350px] md:w-[900px]">
+                        <div x-show="currentImage === index" class="swiper-slide flex justify-center transition-transform duration-500 ease-in">
+                            <img :src="image.src" :alt="image.alt" class="md:h-[400px] md:w-[900px]">
                         </div>
                     </template>
                 </div>
