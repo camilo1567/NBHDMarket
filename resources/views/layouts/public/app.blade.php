@@ -17,7 +17,7 @@
 
         @yield('head')
     </head>
-    <body class="font-inter text-primary antialiased  bg-gray-100">
+    <body class=" bg-gray-100">
 
         @include('elements.public.navigation')
 
@@ -25,6 +25,7 @@
         @yield('content')
 
 
+        @include('elements.public.footer')
 
         @yield('scripts')
     </body>

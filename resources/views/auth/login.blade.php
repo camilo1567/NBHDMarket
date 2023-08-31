@@ -10,7 +10,7 @@
                 <div class="flex flex-col w-full max-w-full px-3 mx-auto md:flex-0 shrink-0 md:w-6/12 lg:w-5/12 xl:w-4/12">
                   <div class="relative flex flex-col min-w-0 mt-32 break-words bg-transparent border-0 shadow-none rounded-2xl bg-clip-border">
                     <div class="p-6 pb-0 mb-0 bg-transparent border-b-0 rounded-t-2xl">
-                      <h3 class="relative z-10 font-bold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text text-2xl">Bienvenido</h3>
+                      <h3 class="text-template text-2xl">Bienvenido</h3>
                       <p class="mb-0">Ingresa tu email y contraseña para iniciar sesion</p>
                     </div>
                     <div class="flex-auto p-6">
@@ -50,11 +50,11 @@
                     <div class="p-6 px-1 pt-0 text-center bg-transparent border-t-0 border-t-solid rounded-b-2xl lg:px-2">
                         <p class="mx-auto mb-6 leading-normal text-sm">
                             No tienes ninguna cuenta aun?
-                            <a href="{{ route('register') }}" class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text">Registrarse</a>
+                            <a href="{{ route('register') }}" class="text-template font-semibold">Registrarse</a>
                         </p>
 
                         @if (Route::has('password.request'))
-                            <a class="relative z-10 font-semibold text-transparent bg-gradient-to-tl from-blue-600 to-cyan-400 bg-clip-text" href="{{ route('password.request') }}">
+                            <a class="text-template" href="{{ route('password.request') }}">
                                 {{ __('¿Olvidaste tu contraseña?') }}
                             </a>
                         @endif

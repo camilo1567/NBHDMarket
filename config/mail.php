@@ -85,6 +85,10 @@ return [
                 'log',
             ],
         ],
+
+        'resend' => [
+            'transport' => 'resend',
+        ],
     ],
 
     /*
@@ -120,6 +124,10 @@ return [
         'paths' => [
             resource_path('views/vendor/mail'),
         ],
+    ],
+
+    'resend' => [
+        'transport' => 'resend',
     ],
 
 ];

@@ -16,7 +16,7 @@
 
 @section('content')
 
-<div class="container mx-auto lg:px-4 px-4">
+<div class="s mx-auto lg:px-4 px-4">
 
     <div x-data="{
             images: [
@@ -34,7 +34,7 @@
             }
         }" x-init="startCarousel()" class="px-2">
         <div class="relative">
-            <div class="swiper-container">
+            <div class="swiper-s">
                 <div class="swiper-wrapper">
                     <template x-for="(image, index) in images" :key="index">
                         <div x-show="currentImage === index" class="swiper-slide flex justify-center transition-transform duration-500 ease-in">
@@ -62,7 +62,7 @@
         </div>
     </div>
 
-    <div class="container max-w-6xl mx-auto xl:px-0 mt-5">
+    <div class="s max-w-6xl mx-auto xl:px-0 mt-5">
         <h2 class="text-2xl font-bold my-5">Ofertas</h2>
         <div class="col-span-1 xl:col-span-1">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
@@ -84,7 +84,7 @@
 
 
 
-    <div class="container max-w-6xl mx-auto xl:px-0">
+    <div class="s max-w-6xl mx-auto xl:px-0">
         <h2 class="text-2xl font-bold my-5">Tiendas</h2>
 
         <div class="grid xl:grid-cols-3 grid-cols-2  gap-7">
@@ -171,7 +171,7 @@
     </div>
 
 
-<div class="h-48"></div>
+<div class="h-[150px]"></div>
 
 
 @endsection
