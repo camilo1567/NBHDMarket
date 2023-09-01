@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Superadmin\CategoryController;
+use App\Http\Controllers\Superadmin\PublicityController;
 use App\Http\Controllers\Superadmin\SubcategoryController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
@@ -26,6 +27,7 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('users',UserController::class);
     Route::resource('tickets',TicketController::class);
     Route::resource('categories',CategoryController::class);
+    Route::resource('publicities',PublicityController::class);
 
     Route::get('/categorias/{category}/index',[SubcategoryController::class,'index'])->name('subcategories.index');
     Route::get('/categorias/{category}/create',[SubcategoryController::class,'create'])->name('subcategories.create');
