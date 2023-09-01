@@ -55,7 +55,7 @@
 
 
     <div class="flex gap-1">
-        <div class="w-full md:w-1/3">
+        <div class="w-full md:w-1/2">
             <div class="bg-white p-4 m-2 rounded-lg">
                 <div class="flex justify-between mb-3">
                 <div class="flex items-center">
@@ -81,18 +81,22 @@
                 </div>
 
                 <div class="bg-gray-50 dark:bg-gray-700 p-3 rounded-lg">
-                <div class="grid grid-cols-3 gap-3 mb-2">
-                    <dl class="bg-orange-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
-                    <dt class="w-8 h-8 rounded-full bg-orange-100 dark:bg-gray-500 text-orange-600 dark:text-orange-300 text-sm font-medium flex items-center justify-center mb-1">12</dt>
-                    <dd class="text-orange-600 dark:text-orange-300 text-sm font-medium">Pendiente</dd>
-                    </dl>
-                    <dl class="bg-teal-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
-                    <dt class="w-8 h-8 rounded-full bg-teal-100 dark:bg-gray-500 text-teal-600 dark:text-teal-300 text-sm font-medium flex items-center justify-center mb-1">23</dt>
-                    <dd class="text-teal-600 dark:text-teal-300 text-sm font-medium">En proceso</dd>
-                    </dl>
+                <div class="grid grid-cols-4 gap-2 mb-2">
                     <dl class="bg-blue-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
-                    <dt class="w-8 h-8 rounded-full bg-blue-100 dark:bg-gray-500 text-blue-600 dark:text-blue-300 text-sm font-medium flex items-center justify-center mb-1">64</dt>
-                    <dd class="text-blue-600 dark:text-blue-300 text-sm font-medium">Cerrado</dd>
+                    <dt class="w-8 h-8 rounded-full bg-blue-100 dark:bg-gray-500 text-blue-600 dark:text-blue-300 text-sm font-medium flex items-center justify-center mb-1">{{ $tickets['abiertos'] }}</dt>
+                    <dd class="text-blue-600 dark:text-blue-300 text-sm font-medium">Abiertos</dd>
+                    </dl>
+                    <dl class="bg-red-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt class="w-8 h-8 rounded-full bg-red-100 dark:bg-gray-500 text-red-600 dark:text-red-300 text-sm font-medium flex items-center justify-center mb-1">{{ $tickets['pendientes'] }}</dt>
+                    <dd class="text-red-600 dark:text-red-300 text-sm font-medium">Pendiente</dd>
+                    </dl>
+                    <dl class="bg-yellow-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt class="w-8 h-8 rounded-full bg-yellow-100 dark:bg-gray-500 text-yellow-600 dark:text-yellow-300 text-sm font-medium flex items-center justify-center mb-1">{{ $tickets['enProgreso'] }}</dt>
+                    <dd class="text-yellow-600 dark:text-yellow-300 text-sm font-medium">En progreso</dd>
+                    </dl>
+                    <dl class="bg-green-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center h-[78px]">
+                    <dt class="w-8 h-8 rounded-full bg-green-100 dark:bg-gray-500 text-green-600 dark:text-green-300 text-sm font-medium flex items-center justify-center mb-1">{{ $tickets['cerrados'] }}</dt>
+                    <dd class="text-green-600 dark:text-green-300 text-sm font-medium">Cerrado</dd>
                     </dl>
                 </div>
                 </div>
@@ -116,7 +120,7 @@
             </div>
         </div>
 
-        <div  class="w-full md:w-1/3">
+        <div  class="w-full md:w-1/2">
             <div class="bg-white p-4 m-2 rounded-lg">
 
                 <div class="flex justify-between items-start w-full">
@@ -176,60 +180,64 @@
     window.addEventListener("load", function() {
       const getChartOptions = () => {
           return {
-            series: [90, 85, 70],
-            colors: ["#1C64F2", "#16BDCA", "#FDBA8C"],
+            series: [
+                    {{ $tickets['cerrados'] }},
+                    {{ $tickets['enProgreso'] }},
+                    {{ $tickets['pendientes'] }},
+                    {{ $tickets['abiertos'] }},
+                ],
+            colors: ["#4ade80", "#facc15", "#f87171","#60a5fa"],
             chart: {
-              height: "380px",
+              height: 420,
               width: "100%",
-              type: "radialBar",
-              sparkline: {
-                enabled: true,
-              },
+              type: "pie",
             },
             plotOptions: {
-              radialBar: {
-                track: {
-                  background: '#E5E7EB',
+              pie: {
+                labels: {
+                  show: true,
                 },
+                size: "100%",
                 dataLabels: {
-                  show: false,
-                },
-                hollow: {
-                  margin: 0,
-                  size: "32%",
+                  offset: -25
                 }
               },
             },
-            grid: {
-              show: false,
-              strokeDashArray: 4,
-              padding: {
-                left: 2,
-                right: 2,
-                top: -23,
-                bottom: -20,
+            stroke: {
+              colors: ["white"],
+              lineCap: "",
+            },
+            labels: ["Cerrado", "En progreso", "Pendiente","Abierto"],
+            dataLabels: {
+              enabled: true,
+              style: {
+                fontFamily: "Inter, sans-serif",
               },
             },
-            labels: ["Cerrado", "En proceso", "Pendiente"],
             legend: {
-              show: true,
               position: "bottom",
               fontFamily: "Inter, sans-serif",
             },
-            tooltip: {
-              enabled: true,
-              x: {
+            yaxis: {
+              labels: {
+                formatter: function (value) {
+                  return value
+                },
+              },
+            },
+            xaxis: {
+              labels: {
+                formatter: function (value) {
+                  return value  + "%"
+                },
+              },
+              axisTicks: {
+                show: false,
+              },
+              axisBorder: {
                 show: false,
               },
             },
-            yaxis: {
-              show: false,
-              labels: {
-                formatter: function (value) {
-                  return value + '%';
-                }
-              }
-            }
           }
         }
 
@@ -245,8 +253,17 @@
     window.addEventListener("load", function() {
       const getChartOptions = () => {
           return {
-            series: [49, 51],
-            colors: ["#1C64F2", "#16BDCA", "#9061F9"],
+            series: [
+                {{ $users->filter(function ($user) {
+                    return $user->hasRole('cliente');
+                })->count() }},
+
+                {{ $users->filter(function ($user) {
+                    return $user->hasRole('negocio');
+                })->count() }}
+
+            ],
+            colors: ["#1C64F2", "#16BDCA"],
             chart: {
               height: 420,
               width: "100%",
