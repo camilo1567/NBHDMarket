@@ -48,6 +48,10 @@
     @apply gap-1 justify-end px-3 py-2 font-bold text-center text-white bg-green-400 hover:bg-green-500 rounded-lg;
 }
 
+.btn-info{
+    @apply flex items-center gap-1 justify-start px-3 py-2 font-bold text-center text-white bg-cyan-400 hover:bg-cyan-500 rounded-lg;
+}
+
 .btn-default{
     @apply  inline-block w-full px-3 py-3 font-bold text-center text-white uppercase align-middle transition-all bg-transparent border-0 rounded-lg cursor-pointer text-xs  bg-gradient-to-tl from-blue-600 to-cyan-400;
 }

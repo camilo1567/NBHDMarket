@@ -14,5 +14,6 @@ class Publicity extends Model
         'nombre',
         'descripcion',
         'imagen',
+        'status',
     ];
 }

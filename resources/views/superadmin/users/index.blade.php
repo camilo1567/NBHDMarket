@@ -36,8 +36,7 @@
                 <table class="table-template">
                     <thead>
                         <tr>
-                            <th class="text-left th-template">Nombre</th>
-                            <th class="text-left th-template">Email</th>
+                            <th class="text-left th-template">Usuario</th>
                             <th class="text-center th-template">Rol</th>
                             <th class="text-center th-template">Fecha de Creacion</th>
                             <th class="text-center th-template"></th>
@@ -45,13 +44,28 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
+                        @if ($user->id == 2)
+                            @continue
+                        @endif
                             <tr>
                                 <td class="td-template">
-                                    {{ $user->name }}
-                                </td>
-
-                                <td class="td-template">
-                                    {{ $user->email }}
+                                    <div class="flex-shrink-0">
+                                        @if ($user->settings->foto_perfil)
+                                            <img class="w-10 h-10 rounded-full" src="{{ asset('storage/'.$user->settings->foto_perfil) }}" alt="Neil image">
+                                        @else
+                                            <svg  class="w-10 h-10 p-1 bg-gray-100 rounded-full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                            </svg>
+                                        @endif
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                            {{ $user->name }}
+                                        </p>
+                                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                            {{ $user->email }}
+                                        </p>
+                                    </div>
                                 </td>
 
                                 <td class="text-center td-template">
@@ -63,7 +77,7 @@
                                 </td>
 
                                 <td class="td-template">
-                                    <div class="flex gap-2">
+                                    <div class="flex justify-end gap-2">
                                         <a href="{{ route('superadmin.users.edit',$user) }}" class="btn-primary">
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                                                 <path d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z" />

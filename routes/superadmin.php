@@ -29,6 +29,9 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('categories',CategoryController::class);
     Route::resource('publicities',PublicityController::class);
 
+    Route::put('publicities/{publicity}/habilitar',[PublicityController::class,'habilitar'])->name('publicities.habilitar');
+    Route::put('publicities/{publicity}/deshabilitar',[PublicityController::class,'deshabilitar'])->name('publicities.deshabilitar');
+
     Route::get('/categorias/{category}/index',[SubcategoryController::class,'index'])->name('subcategories.index');
     Route::get('/categorias/{category}/create',[SubcategoryController::class,'create'])->name('subcategories.create');
     Route::post('/categorias/{category}/store',[SubcategoryController::class,'store'])->name('subcategories.store');

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('nombre');
             $table->longText('descripcion');
             $table->string('imagen');
+            $table->integer('status')->default(0);
             $table->timestamps();
 
 
