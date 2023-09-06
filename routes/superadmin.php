@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Superadmin\AuditController;
 use App\Http\Controllers\Superadmin\CategoryController;
 use App\Http\Controllers\Superadmin\PublicityController;
 use App\Http\Controllers\Superadmin\SubcategoryController;
@@ -28,6 +29,8 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('tickets',TicketController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('publicities',PublicityController::class);
+
+    Route::get('/auditoria',[AuditController::class,'index'])->name('auditoria.index');
 
     Route::put('publicities/{publicity}/habilitar',[PublicityController::class,'habilitar'])->name('publicities.habilitar');
     Route::put('publicities/{publicity}/deshabilitar',[PublicityController::class,'deshabilitar'])->name('publicities.deshabilitar');
