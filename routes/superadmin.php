@@ -8,6 +8,7 @@ use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
 use App\Http\Controllers\Superadmin\UserController;
 use Illuminate\Support\Facades\Route;
+use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('publicities',PublicityController::class);
 
     Route::get('/auditoria',[AuditController::class,'index'])->name('auditoria.index');
+    Route::get('health', HealthCheckResultsController::class);
 
     Route::put('publicities/{publicity}/habilitar',[PublicityController::class,'habilitar'])->name('publicities.habilitar');
     Route::put('publicities/{publicity}/deshabilitar',[PublicityController::class,'deshabilitar'])->name('publicities.deshabilitar');

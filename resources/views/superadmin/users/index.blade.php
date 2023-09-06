@@ -73,7 +73,7 @@
                                 </td>
 
                                 <td class="text-center td-template">
-                                    {{ $user->created_at->format('d/m/Y') }}
+                                    {{ $user->created_at->sub(new DateInterval('PT5H'))->format('d/m/Y') }}
                                 </td>
 
                                 <td class="td-template">

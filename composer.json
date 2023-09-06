@@ -13,8 +13,10 @@
         "laravel/tinker": "^2.8",
         "maatwebsite/excel": "^1.1",
         "owen-it/laravel-auditing": "^13.5",
+        "phpoffice/phpspreadsheet": "^1.29",
         "resend/resend-laravel": "^0.5.0",
         "spatie/laravel-backup": "^8.3",
+        "spatie/laravel-health": "^1.23",
         "spatie/laravel-permission": "^5.10"
     },
     "require-dev": {
