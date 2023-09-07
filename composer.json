@@ -11,7 +11,7 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
-        "maatwebsite/excel": "^1.1",
+        "maatwebsite/excel": "^3.1",
         "owen-it/laravel-auditing": "^13.5",
         "phpoffice/phpspreadsheet": "^1.29",
         "resend/resend-laravel": "^0.5.0",

@@ -12,25 +12,38 @@
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
+
+/* sidebar inicio */
+
 .sidebar-item-used{
-    @apply flex items-center gap-2 p-2 bg-white rounded-lg m-3;
+    @apply flex items-center p-2 bg-gray-100;
 }
 
 .sidebar-item{
-    @apply flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700;
+    @apply flex items-center p-2 text-gray-900 rounded-lg hover:bg-gray-100;
 }
 
-.sidebar-icon-used{
-    @apply text-white bg-gradient-to-tl from-purple-700 h-8 w-8 to-pink-500 mr-2 flex items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2;
+.sidebar-dropdown-icon{
+    @apply flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 hover:bg-gray-100;
+}
+
+.sidebar-dropdown-icon-used{
+    @apply flex items-center w-full p-2 text-gray-900 transition duration-75 rounded-lg pl-11 bg-gray-100;
+}
+
+.sidebar-item-used .sidebar-icon{
+    @apply w-5 h-5 text-gray-900;
 }
 
 .sidebar-icon{
-    @apply w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white;
+    @apply w-5 h-5 text-gray-500 transition duration-75 group-hover:text-gray-900;
 }
 
 .sidebar-text{
     @apply ml-1 duration-300 opacity-100 pointer-events-none;
 }
+
+/*sidebar final*/
 
 .btn-primary{
     @apply flex items-center gap-1 justify-start px-3 py-2 font-bold text-center text-white bg-blue-400 hover:bg-blue-500 rounded-lg;
