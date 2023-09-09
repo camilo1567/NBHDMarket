@@ -84,11 +84,26 @@ class UserController extends Controller
             'rol' => 'required|integer|between:1,2'
         ]);
 
+        $is_store = 0;
+        $is_client = 0;
+
+        if($request->rol == 1){
+
+            $is_store = 1;
+
+        }
+        if($request->rol == 2){
+
+            $is_client = 1;
+
+        }
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'is_store' => $is_store,
+            'is_client' => $is_client,
         ]);
 
         if($request->rol == 1){

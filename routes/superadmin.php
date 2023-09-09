@@ -3,6 +3,7 @@
 use App\Http\Controllers\Superadmin\AuditController;
 use App\Http\Controllers\Superadmin\CategoryController;
 use App\Http\Controllers\Superadmin\PublicityController;
+use App\Http\Controllers\Superadmin\ReportController;
 use App\Http\Controllers\Superadmin\SubcategoryController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
@@ -30,6 +31,10 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::resource('tickets',TicketController::class);
     Route::resource('categories',CategoryController::class);
     Route::resource('publicities',PublicityController::class);
+
+    //reportes
+    Route::get('/reportes/tickets',[ReportController::class,'ticketsReport'])->name('reportes.tickets');
+    Route::get('/reportes/usuarios',[ReportController::class,'usersExport'])->name('reportes.usuarios');
 
     Route::get('/auditoria',[AuditController::class,'index'])->name('auditoria.index');
     Route::get('health', HealthCheckResultsController::class);
