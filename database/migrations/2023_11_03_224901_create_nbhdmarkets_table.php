@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nbhdmarket', function (Blueprint $table) {
+        Schema::create('nbhdmarkets', function (Blueprint $table) {
             $table->id();
             $table->string('correo')->nullable()->unique();
             $table->string('telefono')->nullable()->unique();

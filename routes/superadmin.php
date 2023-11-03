@@ -3,12 +3,14 @@
 use App\Http\Controllers\Superadmin\AuditController;
 use App\Http\Controllers\Superadmin\CategoryController;
 use App\Http\Controllers\Superadmin\ContactController;
+use App\Http\Controllers\Superadmin\NbhdController;
 use App\Http\Controllers\Superadmin\PublicityController;
 use App\Http\Controllers\Superadmin\ReportController;
 use App\Http\Controllers\Superadmin\SubcategoryController;
 use App\Http\Controllers\Superadmin\SuperadminController;
 use App\Http\Controllers\Superadmin\TicketController;
 use App\Http\Controllers\Superadmin\UserController;
+use App\Models\Nbhdmarket;
 use Illuminate\Support\Facades\Route;
 use Spatie\Health\Http\Controllers\HealthCheckResultsController;
 
@@ -58,9 +60,17 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::get('/ajustes',[SuperadminController::class,'settings'])->name('ajustes');
     Route::put('/ajustes',[SuperadminController::class,'updateSettings'])->name('ajustes.update');
 
+
+    // Route::get('/info',[SuperadminController::class,'info'])->name('informacion');
+    // Route::put('/info',[SuperadminController::class,'updateInfo'])->name('info.update');
+
+
+
     //ruta para contactos
 
     Route::resource('contacts',ContactController::class);
+
+    Route::resource('info',NbhdController::class);
 
     // Route::get('/contactos', [ContactController::class, 'index'])->name('contacts.index');
     // Route::get('/contactos/create', [ContactController::class, 'create'])->name('contacts.create');
