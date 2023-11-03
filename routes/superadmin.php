@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Superadmin\AuditController;
 use App\Http\Controllers\Superadmin\CategoryController;
+use App\Http\Controllers\Superadmin\ContactController;
 use App\Http\Controllers\Superadmin\PublicityController;
 use App\Http\Controllers\Superadmin\ReportController;
 use App\Http\Controllers\Superadmin\SubcategoryController;
@@ -57,5 +58,15 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
     Route::get('/ajustes',[SuperadminController::class,'settings'])->name('ajustes');
     Route::put('/ajustes',[SuperadminController::class,'updateSettings'])->name('ajustes.update');
 
+    //ruta para contactos
+
+    Route::resource('contacts',ContactController::class);
+
+    // Route::get('/contactos', [ContactController::class, 'index'])->name('contacts.index');
+    // Route::get('/contactos/create', [ContactController::class, 'create'])->name('contacts.create');
+    // Route::post('/contactos/store', [ContactController::class, 'store'])->name('contacts.store');
+    // Route::get('/contactos/{contact}/edit', [ContactController::class, 'edit'])->name('contacts.edit');
+    // Route::put('/contactos/{contact}/update', [ContactController::class, 'update'])->name('contacts.update');
+    // Route::delete('/contactos/{contact}/destroy', [ContactController::class, 'destroy'])->name('contacts.destroy');
 });
 
