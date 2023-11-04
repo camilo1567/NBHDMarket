@@ -11,18 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('nbhdmarkets', function (Blueprint $table) {
+        Schema::create('nbhdmarket', function (Blueprint $table) {
             $table->id();
             $table->string('correo')->nullable()->unique();
             $table->string('telefono')->nullable()->unique();
             $table->string('direccion')->nullable();
-            $table->string('twitter');
-            $table->string('facebook');
-            $table->string('instagram');
+            $table->string('twitter')->nullable();
+            $table->string('facebook')->nullable();
+            $table->string('instagram')->nullable();
             $table->string('whatsapp')->nullable()->unique();
             $table->timestamps();
 
-    
+
         });
     }
 

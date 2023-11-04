@@ -23,7 +23,7 @@
 
         {{ Aire::open()->route('superadmin.contacts.store') }}
 
-        <div class="md:flex gap-2 md:grid-cols-2">
+        <div class="grid gap-2 md:grid-cols-2">
 
                 {{ Aire::input('nombre','Nombre') }}
 

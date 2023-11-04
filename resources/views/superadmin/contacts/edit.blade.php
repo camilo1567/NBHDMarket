@@ -21,13 +21,13 @@
 
         {{ Aire::open()->route('superadmin.contacts.update', $contact) }}
 
-        <div class="md:flex gap-2 md:grid-cols-2">
+        <div class="grid gap-2 md:grid-cols-2">
 
                 {{ Aire::input('nombre','Nombre')->value($contact->nombre) }}
                 {{ Aire::input('apellido','Apellido')->value($contact->apellido) }}
                 {{ Aire::input('email','Email')->value($contact->email) }}
                 {{ Aire::input('telefono','Telefono')->value($contact->telefono) }}
-                
+
         </div>
 
         <div class="flex justify-end py-2">

@@ -9,7 +9,8 @@ class Nbhdmarket extends Model
 {
     use HasFactory;
 
-    protected $table = 'nbhdmarkets';
+    protected $table = 'nbhdmarket';
+
     protected $fillable = [
         'telefono',
         'correo',
