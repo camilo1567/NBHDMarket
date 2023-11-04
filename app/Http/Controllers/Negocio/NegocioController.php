@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Negocio;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use App\Models\UserSetting;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NegocioController extends Controller
 {
@@ -12,7 +15,7 @@ class NegocioController extends Controller
      */
     public function index()
     {
-        //
+        return view('negocio.index');
     }
 
     /**
@@ -61,5 +64,44 @@ class NegocioController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function data_filled()
+    {
+        $user = Auth::user();
+
+        $data = compact('user');
+
+        return view('negocio.data',$data);
+
+    }
+
+    public function data_complete(Request $request,User $user)
+    {
+
+        $this->validate($request,[
+            'nombre' => 'required',
+            'direccion' => 'required',
+            'descripcion' => 'required|max:255',
+        ]);
+
+        $user_settings = UserSetting::whereUserId($user->id)->first();
+
+        $user_settings->update([
+            'nombre' => $request->nombre,
+            'direccion' => $request->direccion,
+            'contacto' => $request->contacto,
+            'whatsapp' => $request->whatsapp,
+            'facebook' => $request->facebook,
+            'instagram' => $request->instagram,
+            'twitter' => $request->twitter,
+            'descripcion' => $request->descripcion,
+        ]);
+
+        $user->update(['data_filled' => 1]);
+
+
+        return redirect()->route('dashboard');
+
     }
 }
