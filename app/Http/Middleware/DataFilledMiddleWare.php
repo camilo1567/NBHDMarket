@@ -19,8 +19,8 @@ class DataFilledMiddleWare
 
         $user = Auth::user();
 
-        if ($user && $user->data_filled == 1) {
-             return redirect()->route('user.edit', $user);
+        if($user->is_store == 1 && $user->data_filled == 0 ){
+            return redirect()->route('negocio.datafilled',$user);
         }
 
         return $next($request);

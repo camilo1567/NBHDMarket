@@ -100,6 +100,7 @@ return [
         'input'=> 'border border-gray-300 text-gray-900 sm:text-sm rounded focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5',
         'checkbox'=> 'border border-gray-300',
         'select'=> 'border border-gray-300 text-gray-900 sm:text-sm rounded focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5',
+        'textarea'=> 'border border-gray-300 text-gray-900 sm:text-sm rounded focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5',
     ],
 
 	/*
