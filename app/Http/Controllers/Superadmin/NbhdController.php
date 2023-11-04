@@ -13,7 +13,14 @@ class NbhdController extends Controller
      */
     public function index()
     {
-        //
+        // $users = User::all();
+        // $tickets = $this->totalByTickets();
+
+        //dd($tickets);
+
+        // $data = compact('users','tickets');
+
+        return view('superadmin.dashboard');
     }
 
     /**
@@ -43,22 +50,27 @@ class NbhdController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(NbhdMarket $nbhd)
+    public function edit(string $id)
     {
-        $data = compact('info');
+        $nbhd = Nbhdmarket::find($id);
 
-        return view('superadmin.info.index', $data);
+        $context = compact('nbhd');
+
+        return view('superadmin.info.edit', $context);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, NbhdMarket $nbhd)
+    public function update(Request $request, string $id)
     {
+
+        $nbhd = Nbhdmarket::find($id);
+
         $this->validate($request, [
             
-            'correo' => 'required|email|max:50',
-            'telefono' => 'required|unique:contacts,telefono',
+            'correo' => 'required|email|',
+            'telefono' => 'required',
             'direccion' => 'required',
             'twitter' => 'required',
             'facebook' => 'required',
@@ -67,19 +79,11 @@ class NbhdController extends Controller
 
         ]);
 
-        $nbhd->update([
-            'correo' => $request->correo,
-            'telefono' => $request->telefono,
-            'direccion' => $request->direccion,
-            'twitter' => $request->twitter,
-            'facebook' => $request->facebook,
-            'instagram' => $request->instagram,
-            'whatsapp' => $request->whatsapp,
-        ]);
+        $nbhd->update($request->all());
 
     
 
-        return redirect()->route('superadmin.info.index')->with('success', 'Contacto actualizado con éxito');
+        return redirect()->route('superadmin.info.edit', $nbhd->id)->with('success', 'Datos actualizados con éxito');
     }
 
     /**
@@ -94,9 +98,9 @@ class NbhdController extends Controller
     // public function info()
     // {
     //     $user = auth()->user();
-    //     $settings = $user->settings;
+    //     $nbhd = $user->nbhd;
 
-    //     $data = compact('settings');
+    //     $data = compact('nbhd');
 
     //     return view('superadmin.info',$data);
     // }
@@ -105,10 +109,10 @@ class NbhdController extends Controller
     // {
 
     //     $user = auth()->user();
-    //     $settings = $user->settings;
+    //     $nbhd = $user->nbhd;
 
-    //     $settings->update($request->all());
+    //     $nbhd->update($request->all());
 
-    //     return redirect()->route('superadmin.ajustes')->with('success','Ajustes actualizados correctamente');
+    //     return redirect()->route('superadmin.info')->with('success','Ajustes actualizados correctamente');
     // }
 }

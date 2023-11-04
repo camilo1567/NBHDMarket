@@ -17,13 +17,34 @@
               <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">CONTACTO</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
-                        <li class="mb-2">{{ $nbhd->telefono ? 'Tel: '.$nbhd->telefono : '' }}</li>
-                        <li class="mb-2">{{ $nbhd->email ? 'Email: '.$nbhd->email : '' }}</li>
+                        <li class="mb-2">{{ $nbhd->telefono ? ''.$nbhd->telefono : '' }}</li>
+                        <li class="mb-2">{{ $nbhd->correo ? ' '.$nbhd->correo : '' }}</li>
                         <li class="mb-2">{{ $nbhd->direccion ? 'Direccion: '.$nbhd->direccion : '' }}</li>
                     
                   </ul>
               </div>
               <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">REDES SOCIALES</h2>
+                  <ul class="text-gray-500 dark:text-gray-400 font-medium">
+                        <li class="mb-2 flex gap-2 align-middle"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-instagram" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z"></path>
+                            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+                            <path d="M16.5 7.5l0 .01"></path>
+                        </svg>{{ $nbhd->instagram ? ' '.$nbhd->instagram : '' }}</li>
+                        <li class="mb-2 flex gap-2 align-middle"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-facebook" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3"></path>
+                        </svg>{{ $nbhd->facebook ? ' '.$nbhd->facebook : '' }}</li>
+                        <li class="mb-2 flex gap-2 align-middle"> <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-x" width="20" height="20" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M4 4l11.733 16h4.267l-11.733 -16z"></path>
+                            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772"></path>
+                        </svg>{{ $nbhd->twitter ? ''.$nbhd->twitter : '' }}</li>
+                    
+                  </ul>
+              </div>
+              {{-- <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
@@ -33,7 +54,7 @@
                           <a href="https://discord.gg/4eeurUVvTy" class="hover:underline">Discord</a>
                       </li>
                   </ul>
-              </div>
+              </div> --}}
               <div>
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">

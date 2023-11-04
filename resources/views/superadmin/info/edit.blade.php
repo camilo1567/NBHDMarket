@@ -13,7 +13,7 @@
 
             <h1 class="text-2xl font-bold uppercase pb-4">Informacion</h1>
 
-            {{ Aire::open()->route('superadmin.info.update')->encType('multipart/form-data') }}
+            {{ Aire::open()->route('superadmin.info.update',1) }}
 
 
             <section class="py-2 border-b">
@@ -24,14 +24,28 @@
                     <!-- contacto -->
                     <div class="w-full md:w-1/2 text-lg font-bold">
 
-                        {{ Aire::number('telefono','Numero de Contacto')->value($nbhd->telefono) }}
+                        {{-- {{ Aire::number('telefono','Numero de Contacto')->value($nbhd->telefono) }} --}}
+
+                        {{-- @if ($nbhd) --}}
+    {{ Aire::number('telefono','Numero de Contacto')->value($nbhd->telefono) }}
+{{-- @endif --}}
+
 
                     </div>
 
                     <!--- direccion -->
                     <div class="w-full md:w-1/2 text-lg font-bold">
 
+                        
+
                         {{ Aire::input('direccion','Direccion')->value($nbhd->direccion) }}
+
+                    </div>
+                    <div class="w-full md:w-1/2 text-lg font-bold">
+
+                        
+
+                        {{ Aire::input('correo','Correo')->value($nbhd->correo) }}
 
                     </div>
                 </div>
@@ -56,8 +70,11 @@
                             WhatsApp
                         </div>
 
+                        {{-- @if ($nbhd) --}}
+
                         {{ Aire::input('whatsapp')->value($nbhd->whatsapp) }}
 
+                        {{-- @endif --}}
                     </div>
 
                     <!--- instagram -->
@@ -73,8 +90,10 @@
                             Instagram
                         </div>
 
-                        {{ Aire::input('instagram')->value($nbhd->instagram) }}
+                        {{-- @if ($nbhd) --}}
 
+                        {{ Aire::input('instagram')->value($nbhd->instagram) }}
+{{-- @endif --}}
 
                     </div>
 
@@ -89,7 +108,10 @@
                             Facebook
                         </div>
 
+                        {{-- @if ($nbhd) --}}
+
                         {{ Aire::input('facebook')->value($nbhd->facebook) }}
+{{-- @endif --}}
 
                     </div>
 
@@ -105,8 +127,11 @@
                             Twitter
                         </div>
 
+                        {{-- @if ($nbhd) --}}
+
                         {{ Aire::input('twitter')->value($nbhd->twitter) }}
 
+                        {{-- @endif --}}
                     </div>
                 </div>
 

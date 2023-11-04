@@ -56,13 +56,16 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
 
     Route::get('/clientes',[UserController::class,'clientIndex'])->name('users.clientes');
     Route::get('/negocios',[UserController::class,'negocioIndex'])->name('users.negocios');
+    
+    Route::resource('/info',NbhdController::class);
+
 
     Route::get('/ajustes',[SuperadminController::class,'settings'])->name('ajustes');
     Route::put('/ajustes',[SuperadminController::class,'updateSettings'])->name('ajustes.update');
 
 
-    // Route::get('/info',[SuperadminController::class,'info'])->name('informacion');
-    // Route::put('/info',[SuperadminController::class,'updateInfo'])->name('info.update');
+    // Route::get('/info',[NbhdController::class,'info'])->name('info');
+    // Route::put('/info',[NbhdController::class,'updateInfo'])->name('info.update');
 
 
 
@@ -70,7 +73,11 @@ Route::prefix('superadmin')->middleware(['auth', 'role:superadmin'])->name('supe
 
     Route::resource('contacts',ContactController::class);
 
-    Route::resource('info',NbhdController::class);
+
+    //  Route::put('/info/{info}', [ContactController::class, 'update'])->name('info.update');
+
+    // Route::get('/superadmin/info/{info}', [NbhdController::class, 'infoUpdate'])->name('superadmin.info.update');
+
 
     // Route::get('/contactos', [ContactController::class, 'index'])->name('contacts.index');
     // Route::get('/contactos/create', [ContactController::class, 'create'])->name('contacts.create');
