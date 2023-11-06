@@ -32,21 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-
 Route::get('/about', [AboutController::class, 'index'])->name('elements.about');
 
-Route::prefix('negocio')->middleware(['auth','role:negocio'])->name('negocio.')->group(function () {
 
-    Route::get('/informacion/{user}',[NegocioController::class,'data_filled'])->name('datafilled');
-    Route::post('/informacion/{user}',[NegocioController::class,'data_complete'])->name('datacomplete');
-
-});
-
-Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->name('negocio.')->group(function () {
-
-    Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
-
-});
 
 require __DIR__.'/auth.php';
 require __DIR__.'/superadmin.php';
+require __DIR__.'/negocio.php';
+
