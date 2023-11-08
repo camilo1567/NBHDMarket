@@ -32,7 +32,6 @@
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ $publicity->descripcion }}</p>
                         </div>
                         <div class="flex gap-2">
-
                             @if ($publicity->status == 0)
                                 {{ Aire::open()->route('superadmin.publicities.habilitar', $publicity) }}
                                     <button type="submit" class="btn-info" >

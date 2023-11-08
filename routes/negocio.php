@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Negocio\ImagenController;
 use App\Http\Controllers\Negocio\NegocioController;
+use App\Http\Controllers\Negocio\ProductController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('negocio')->middleware(['auth','role:negocio'])->name('negocio.')->group(function () {
@@ -13,6 +15,8 @@ Route::prefix('negocio')->middleware(['auth','role:negocio'])->name('negocio.')-
 Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->name('negocio.')->group(function () {
 
     Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
+    Route::resource('products',ProductController::class);
+    Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
 
 });
 

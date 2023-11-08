@@ -1,7 +1,7 @@
 @extends('layouts.superadmin.app')
 
 @section('titulo')
-    Publicidades
+    Productos
 @endsection
 
 @section('content')

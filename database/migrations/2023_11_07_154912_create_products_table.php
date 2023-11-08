@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nombre')->nullable();
             $table->integer('cantidad')->nullable();
             $table->longText('descripción')->nullable();
+            $table->foreignId('negocio_id')->constrained()->onDelete('cascade');
             $table->integer('precio')->nullable();
             $table->timestamps();
         });
