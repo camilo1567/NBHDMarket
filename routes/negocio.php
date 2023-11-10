@@ -16,7 +16,7 @@ Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->nam
 
     Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
     Route::resource('products',ProductController::class);
-    Route::post('/imagenes', [ImagenController::class, 'store'])->name('imagenes.store');
+    Route::post('/imagenes', [ProductController::class, 'storeImagen'])->name('imagen.storeImagen');
 
 });
 

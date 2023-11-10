@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('nombre')->nullable();
             $table->integer('cantidad')->nullable();
             $table->longText('descripcion')->nullable();
-            $table->foreignId('negocio_id')->constrained()->onDelete('cascade');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->string('imagen')->nullable();
             $table->integer('precio')->nullable();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

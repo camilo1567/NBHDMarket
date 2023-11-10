@@ -2,9 +2,15 @@
 
 namespace App\Http\Controllers\Negocio;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Intervention\Image\Facades\Image;
+use id;
 
 class ProductController extends Controller
 {
@@ -12,8 +18,10 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $products = Product::all();
+    {        
+        $user_id = Auth()->user()->id;
+
+        $products = Product::where('user_id', $user_id)->get();
 
         return view('negocio.products.index', compact('products'));
     }
@@ -31,24 +39,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $user = Auth::user();
+
         $this->validate($request, [
-            'nombre' => 'required|string|max:40',
-            'precio' => 'required|string|max:40',
+            'nombre' => 'required',
+            'precio' => 'required|integer',
             'cantidad' => 'required|integer|min:1',
-            'descripción' => 'required',
-            'imagen' => 'required'
+            'descripcion' => 'required',
+            'archivo' => 'required|mimes:png,jpeg,jpg'
         ]);
 
-        $product = Product::create([
-            'nombre' => $request->nombre,
-            'precio' => $request->precio,
-            'cantidad' => $request->cantidad,
-            'descripcion' => $request->descripcion,
-            'imagen' => $request->imagen,
-            'user_id' => auth()->user()->id
-        ]);
+        $request['user_id'] = $user->id;
 
-        return redirect()->route('negocio.products.index', auth()->user()->name)->with('success', 'Producto agregado con éxito');
+        $image = $request->file('archivo');
+
+        $name = time().$image->getClientOriginalName();
+
+        $image->storeAs('img/productos/',$name,'public');
+
+        $path = 'img/productos/'.$name;
+
+        $request['imagen'] = $path;
+
+        Product::create($request->all());
+
+        return redirect()->route('negocio.products.index')->with('success', 'Producto agregado con éxito');
     }
 
     /**
@@ -72,21 +87,34 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
+    
     public function update(Request $request, Product $product)
     {
+        $user = Auth::user();
+
         $this->validate($request, [
-            'nombre' => 'required|unique:contacts,nombre,'.$product->id.'|max:40',
-            'precio' => 'required|string|max:40',
+            'nombre' => 'required',
+            'precio' => 'required|integer',
             'cantidad' => 'required|integer|min:1',
-            'descripción' => 'required'
+            'descripcion' => 'required',
+            'archivo' => 'required|mimes:png,jpeg,jpg'
         ]);
 
-        $product->update([
-            'nombre' => $request->nombre,
-            'precio' => $request->precio,
-            'cantidad' => $request->cantidad,
-            'descripción' => $request->descripcion
-        ]);
+        $request['user_id'] = $user->id;
+
+        if ($request->hasFile('archivo')) {
+            $image = $request->file('archivo');
+
+            $name = time().$image->getClientOriginalName();
+
+            $image->storeAs('img/productos',$name,'public');
+
+            $path = 'img/productos/'.$name;
+
+            $request['imagen'] = $path;
+        }
+
+        $product->update($request->all());
 
         return redirect()->route('negocio.products.index')->with('success', 'Producto actualizado con éxito');
     }

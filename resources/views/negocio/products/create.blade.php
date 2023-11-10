@@ -19,35 +19,34 @@
 
     <div class="p-6 bg-white rounded-lg">
         <div class="md:w1/2 px-10 grid md:grid-cols-2">
-            <form action="{{ route('negocio.imagenes.store') }}" method="POST" enctype="multipart/form-data" id="dropzone"
-                class="dropzone border-dashed border-2 w-96 h-96 rounded flex flex-col justify-center items-center">
-                @csrf
-            </form>
+            {{ Aire::open()->route('negocio.products.store')->encType('multipart/form-data') }}
 
-            <div>
-                {{ Aire::open()->route('negocio.products.store') }}
+            <div class="gap-2">
 
-                {{ Aire::input('nombre', 'Nombre') }}
+                <div class="md:w-1/2">
 
-                {{ Aire::input('precio', 'Precio') }}
+                    {{ Aire::file('archivo', 'Imagen') }}
 
-                {{ Aire::input('cantidad', 'Cantidad') }}
-
-                {{ Aire::textarea('descripcion', 'Descripción') }}
-
+                </div>
                 <div>
-                    <input type="hidden" name="imagen">
-                    {{-- @error('imagen')
-                        <p class="text-red-500">{{ $message }}</p>
-                    @enderror --}}
+
+                    {{ Aire::input('nombre', 'Nombre') }}
+
+                    {{ Aire::input('precio', 'Precio') }}
+
+                    {{ Aire::input('cantidad', 'Cantidad') }}
+
+                    {{ Aire::textarea('descripcion', 'Descripción') }}
+
                 </div>
 
-                <div class="flex justify-end py-2">
-                    {{ Aire::submit('Crear')->class('btn-new') }}
-                </div>
-
-                {{ Aire::close() }}
             </div>
+
+            <div class="flex justify-end py-2">
+                {{ Aire::submit('Crear')->class('btn-new') }}
+            </div>
+
+            {{ Aire::close() }}
         </div>
     </div>
 @endsection
