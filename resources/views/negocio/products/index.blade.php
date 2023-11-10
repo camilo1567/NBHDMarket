@@ -34,17 +34,17 @@
                                 {{ $product->nombre }}
                             </h5>
                             <div class="flex items-center mb-2">
-                                <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-white">
-                                    ${{ $product->precio }}
+                                <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-white" id="precio">
+                                    {{ $product->precio }}
                                 </h5>
                                 @if ($product->cantidad >= 1)
                                     <div class="pl-10 ml-36">
-                                        <h5 class="text-sm font-semibold text-green-500 mr-2 text-end">En stock
+                                        <h5 class="text-sm font-semibold text-green-500 mr-2">En stock
                                             ({{ $product->cantidad }})</h5>
                                     </div>
                                 @else
                                     <div class="pl-10 ml-40">
-                                        <h5 class="text-sm font-semibold text-red-500 mr-2 text-end">Sin stock</h5>
+                                        <h5 class="text-sm font-semibold text-red-500 mr-2">Sin stock</h5>
                                     </div>
                                 @endif
                             </div>
@@ -88,4 +88,12 @@
         </div>
 
     </div>
+
+    <script>
+        var precioElement = document.getElementById('precio');
+        var precio = parseFloat(precioElement.textContent);
+        var decimales = (precio % 1 !== 0) ? precio.toString().split('.')[1].length : 0;
+
+        precioElement.textContent = ' $ ' + precio.toLocaleString('es-CO', { minimumFractionDigits: decimales });
+    </script>
 @endsection
