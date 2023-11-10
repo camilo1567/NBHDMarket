@@ -90,7 +90,7 @@ class ProductController extends Controller
         $this->validate($request, [
             'nombre' => 'required',
             'precio' => 'required|integer',
-            'cantidad' => 'required|integer|min:1',
+            'cantidad' => 'required|integer',
             'descripcion' => 'required',
             'archivo' => 'mimes:png,jpeg,jpg'
         ]);
