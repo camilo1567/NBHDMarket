@@ -37,13 +37,16 @@
                                 <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-white">
                                     ${{ $product->precio }}
                                 </h5>
-                                <div class="pl-10 ml-36">
-                                    @if ($product->cantidad >= 1)
-                                        <h5 class="text-sm font-semibold text-green-500 mr-2 text-end">En stock ({{ $product->cantidad }})</h5>
-                                    @else
+                                @if ($product->cantidad >= 1)
+                                    <div class="pl-10 ml-36">
+                                        <h5 class="text-sm font-semibold text-green-500 mr-2 text-end">En stock
+                                            ({{ $product->cantidad }})</h5>
+                                    </div>
+                                @else
+                                    <div class="pl-10 ml-40">
                                         <h5 class="text-sm font-semibold text-red-500 mr-2 text-end">Sin stock</h5>
-                                    @endif
-                                </div>
+                                    </div>
+                                @endif
                             </div>
                             <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
                                 {{ $product->descripcion }}
