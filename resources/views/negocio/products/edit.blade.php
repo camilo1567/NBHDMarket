@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+
     <div class="py-2">
 
         <div class="flex justify-start">
@@ -26,14 +27,13 @@
             <div class="flex mb-2">
 
                 <div class="md:w-1/2">
-                    <img class="h-[250px]" src="{{ asset('storage/img/productos' . $product->imagen) }}"
-                        alt="{{ $product->nombre }}" />
+                    <img class="h-[250px]" src="{{ asset('storage/'.$product->imagen) }}" alt="{{ $product->nombre }}" />
                 </div>
 
 
                 <div class="md:w-1/2">
 
-                    {{ Aire::file('archivo', 'Imagen')->value($product->imagen) }}
+                    {{ Aire::file('archivo','Imagen')->value($product->imagen) }}
 
                 </div>
 

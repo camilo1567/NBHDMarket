@@ -3,6 +3,7 @@
 use App\Http\Controllers\Negocio\ImagenController;
 use App\Http\Controllers\Negocio\NegocioController;
 use App\Http\Controllers\Negocio\ProductController;
+use App\Http\Controllers\Negocio\TicketController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('negocio')->middleware(['auth','role:negocio'])->name('negocio.')->group(function () {
@@ -14,10 +15,11 @@ Route::prefix('negocio')->middleware(['auth','role:negocio'])->name('negocio.')-
 
 Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->name('negocio.')->group(function () {
 
-    Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
     Route::resource('products',ProductController::class);
-    Route::post('/imagenes', [ProductController::class, 'storeImagen'])->name('imagen.storeImagen');
+    Route::resource('tickets', TicketController::class);
 
+    Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
+    Route::post('/imagenes', [ProductController::class, 'storeImagen'])->name('imagen.storeImagen');
 });
 
 /*

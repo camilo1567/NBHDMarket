@@ -3,14 +3,9 @@
 namespace App\Http\Controllers\Negocio;
 
 use App\Models\Product;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Intervention\Image\Facades\Image;
-use id;
 
 class ProductController extends Controller
 {
@@ -97,7 +92,7 @@ class ProductController extends Controller
             'precio' => 'required|integer',
             'cantidad' => 'required|integer|min:1',
             'descripcion' => 'required',
-            'archivo' => 'required|mimes:png,jpeg,jpg'
+            'archivo' => 'mimes:png,jpeg,jpg'
         ]);
 
         $request['user_id'] = $user->id;
