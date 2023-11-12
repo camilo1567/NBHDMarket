@@ -12,21 +12,18 @@
 @extends('layouts.public.app')
 
 @section('head')
+    <style>
+        .swiper-slide {
+            transform: translateX(0);
+        }
 
-<style>
-    .swiper-slide {
-        transform: translateX(0); 
-    }
-
-    [x-show*="currentImage"] .swiper-slide {
-        transform: translateX(-100%); 
-    }
-</style>
-
+        [x-show*="currentImage"] .swiper-slide {
+            transform: translateX(-100%);
+        }
+    </style>
 @endsection
 
 @section('content')
-
     <div class="mx-auto lg:px-4 px-4">
         <div x-data="{
             images: [
@@ -47,7 +44,8 @@
                 <div class="swiper-s">
                     <div class="swiper-wrapper">
                         <template x-for="(image, index) in images" :key="index">
-                            <div x-show="currentImage === index" class="swiper-slide flex justify-center transition-transform duration-500 ease-in">
+                            <div x-show="currentImage === index"
+                                class="swiper-slide flex justify-center transition-transform duration-500 ease-in">
                                 <img :src="image.src" :alt="image.alt" class="md:h-[400px] md:w-[900px]">
                             </div>
                         </template>
@@ -55,16 +53,20 @@
                 </div>
 
                 <div class="absolute top-1/2 -translate-y-1/2 left-0">
-                    <button @click="currentImage = (currentImage - 1 + images.length) % images.length" class="swiper-prev p-2 bg-gray-200 rounded-full shadow-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button @click="currentImage = (currentImage - 1 + images.length) % images.length"
+                        class="swiper-prev p-2 bg-gray-200 rounded-full shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                         </svg>
                     </button>
                 </div>
 
                 <div class="absolute top-1/2 -translate-y-1/2 right-0">
-                    <button @click="currentImage = (currentImage + 1) % images.length" class="swiper-next p-2 bg-gray-200 rounded-full shadow-md">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <button @click="currentImage = (currentImage + 1) % images.length"
+                        class="swiper-next p-2 bg-gray-200 rounded-full shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
                     </button>
@@ -77,16 +79,13 @@
             <div class="col-span-1 xl:col-span-1">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})"
-                    >
+                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
                     </div>
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})"
-                    >
+                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
                     </div>
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})"
-                    >
+                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
                     </div>
                 </div>
             </div>
@@ -98,24 +97,27 @@
             <div class="grid xl:grid-cols-3 grid-cols-2  gap-7">
 
                 <!-- card para productos -->
-            @foreach ($products as $product )
-                <a href="{{ route('public.index',$product) }}">
-                    <div class="bg-white shadow-lg p-2 rounded-lg mt-2"> 
-                        <img class="mx-auto" src="{{ asset('storage/'.$product->imagen) }}" alt="nombre product">
+                @foreach ($products as $product)
+                    <a href="{{ route('public.index', $product) }}">
+                        <div class="bg-white shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all 300ms  p-2 rounded-lg mt-2 h-[400px]">
+                            <img class="mx-auto h-[200px]" src="{{ asset('storage/' . $product->imagen) }}"
+                                alt="nombre product">
+                            <hr>
+                            <div class="font-sans mt-4 ml-2">
+                                <p class="font-bold text-gray-800 text-lg"> {{ $product->nombre }} </p>
+                                <p class="mb-3 font-normal text-gray-600 dark:text-gray-400">
+                                    {{ $product->descripcion }}
+                                </p>
+                                <h5 class="precio text-lg font-medium tracking-tight text-gray-700 dark:text-white">{{ $product->precio }}</h5>
+                            </div>
 
-                         <div class="font-sans">
-                            <p class="font-medium text-gray-800 text-lg"></p>
-                            <span class="text-sm text-gray-600">${{ $product->precio }}</span>
                         </div>
-
-                    </div>
-                </a>
-
-            @endforeach
+                    </a>
+                @endforeach
                 <!-- fin card para productos -->
 
 
-{{-- {{--  --}}
+                {{-- {{--  --}}
                 {{-- <a href="#" class="col-span-1 xl:col-span-1">
 
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/ropa.png') }})">
@@ -198,8 +200,5 @@
     </div>
 
     <div class="h-[100px]"></div>
-
-    
-
 @endsection
 {{-- </x-app-layout> --}}

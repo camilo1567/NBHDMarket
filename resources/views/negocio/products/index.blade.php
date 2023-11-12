@@ -34,7 +34,7 @@
                                 {{ $product->nombre }}
                             </h5>
                             <div class="flex items-center mb-2">
-                                <h5 class="text-lg font-bold tracking-tight text-gray-700 dark:text-white" id="precio">
+                                <h5 class="precio text-lg font-bold tracking-tight text-gray-700 dark:text-white">
                                     {{ $product->precio }}
                                 </h5>
                                 @if ($product->cantidad >= 1)
@@ -88,12 +88,4 @@
         </div>
 
     </div>
-
-    <script>
-        var precioElement = document.getElementById('precio');
-        var precio = parseFloat(precioElement.textContent);
-        var decimales = (precio % 1 !== 0) ? precio.toString().split('.')[1].length : 0;
-
-        precioElement.textContent = ' $ ' + precio.toLocaleString('es-CO', { minimumFractionDigits: decimales });
-    </script>
 @endsection
