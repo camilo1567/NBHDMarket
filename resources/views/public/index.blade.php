@@ -101,7 +101,7 @@
             @foreach ($products as $product )
                 <a href="{{ route('public.index',$product) }}">
                     <div class="bg-white shadow-lg p-2 rounded-lg mt-2"> 
-                        <img class="mx-auto" src="{{ asset('img/products/'.$product->imagen) }}" alt="nombre product">
+                        <img class="mx-auto" src="{{ asset('storage/'.$product->imagen) }}" alt="nombre product">
 
                          <div class="font-sans">
                             <p class="font-medium text-gray-800 text-lg"></p>
@@ -116,7 +116,7 @@
 
 
 {{-- {{--  --}}
-                <a href="#" class="col-span-1 xl:col-span-1">
+                {{-- <a href="#" class="col-span-1 xl:col-span-1">
 
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/ropa.png') }})">
                         <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
@@ -192,13 +192,14 @@
                         <span>Arte</span>
                     </div>
 
-                </a> 
+                </a>  --}}
             </div>
         </div>
     </div>
 
     <div class="h-[100px]"></div>
 
+    
 
 @endsection
 {{-- </x-app-layout> --}}
