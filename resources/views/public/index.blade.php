@@ -99,16 +99,15 @@
                 <!-- card para productos -->
                 @foreach ($products as $product)
                     <a href="{{ route('public.index', $product) }}">
-                        <div class="bg-white shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all 300ms  p-2 rounded-lg mt-2 h-[400px]">
-                            <img class="mx-auto h-[200px]" src="{{ asset('storage/' . $product->imagen) }}"
+                        <div
+                            class="h-[520px] bg-white shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all 300ms p-2 rounded-lg mt-2">
+                            <img class="mx-auto mb-2 h-[400px] rounded" src="{{ asset('storage/' . $product->imagen) }}"
                                 alt="nombre product">
                             <hr>
                             <div class="font-sans mt-4 ml-2">
                                 <p class="font-bold text-gray-800 text-lg"> {{ $product->nombre }} </p>
-                                <p class="mb-3 font-normal text-gray-600 dark:text-gray-400">
-                                    {{ $product->descripcion }}
-                                </p>
-                                <h5 class="precio text-lg font-medium tracking-tight text-gray-700 dark:text-white">{{ $product->precio }}</h5>
+                                <h5 class="precio text-lg font-medium tracking-tight text-gray-700 dark:text-white">
+                                    {{ $product->precio }}</h5>
                             </div>
 
                         </div>
@@ -116,85 +115,6 @@
                 @endforeach
                 <!-- fin card para productos -->
 
-
-                {{-- {{--  --}}
-                {{-- <a href="#" class="col-span-1 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/ropa.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Ropa
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Ropa</span>
-                    </div>
-
-                </a>
-
-                <a href="#" class="col-span-1 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/zapato.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Zapatos
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Zapatos</span>
-                    </div>
-
-                </a>
-
-                <a href="#" class="col-span-1 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/productos.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Productos
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Productos</span>
-                    </div>
-
-                </a>
-
-                <a href="#" class="col-span-1 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/comidas.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Comida
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Comida</span>
-                    </div>
-
-                </a>
-
-                <a href="#" class="col-span-2 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/bebidas.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Bebidas
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Bebidas</span>
-                    </div>
-
-                </a>
-
-                <a href="#" class="col-span-1 xl:col-span-1">
-
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/cuadros.png') }})">
-                        <div class="bg-gray-100 px-5 py-1  font-semibold rounded-full xl:flex hidden">
-                            Arte
-                        </div>
-                    </div>
-                    <div class="text-center items-center px-5 py-1  font-semibold  xl:hidden flex w-full justify-center mt-1">
-                        <span>Arte</span>
-                    </div>
-
-                </a>  --}}
             </div>
         </div>
     </div>

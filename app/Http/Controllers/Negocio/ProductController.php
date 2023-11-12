@@ -20,7 +20,6 @@ class ProductController extends Controller
 
         $context = compact('products');
 
-
         return view('negocio.products.index', $context);
     }
 
