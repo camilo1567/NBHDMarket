@@ -18,7 +18,10 @@ class ProductController extends Controller
 
         $products = Product::where('user_id', $user_id)->get();
 
-        return view('negocio.products.index', compact('products'));
+        $context = compact('products');
+
+
+        return view('negocio.products.index', $context);
     }
 
     /**

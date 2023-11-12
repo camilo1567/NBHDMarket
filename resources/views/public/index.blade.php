@@ -1,14 +1,25 @@
+{{-- @php
+    $product = App\Models\Product::first();
+@endphp --}}
+
+
+{{-- <x-app-layout> --}}
+
+{{-- @php
+    $product = App\Models\Product::first();
+@endphp --}}
+
 @extends('layouts.public.app')
 
 @section('head')
 
 <style>
     .swiper-slide {
-        transform: translateX(0); /* Initial position */
+        transform: translateX(0); 
     }
 
     [x-show*="currentImage"] .swiper-slide {
-        transform: translateX(-100%); /* Slide left */
+        transform: translateX(-100%); 
     }
 </style>
 
@@ -82,11 +93,29 @@
         </div>
 
         <div class="s max-w-6xl mx-auto xl:px-0">
-            <h2 class="text-2xl font-bold my-5">Tiendas</h2>
+            <h2 class="text-2xl font-bold my-5">Productos</h2>
 
             <div class="grid xl:grid-cols-3 grid-cols-2  gap-7">
 
+                <!-- card para productos -->
+            @foreach ($products as $product )
+                <a href="{{ route('public.index',$product) }}">
+                    <div class="bg-white shadow-lg p-2 rounded-lg mt-2"> 
+                        <img class="mx-auto" src="{{ asset('img/products/'.$product->imagen) }}" alt="nombre product">
 
+                         <div class="font-sans">
+                            <p class="font-medium text-gray-800 text-lg"></p>
+                            <span class="text-sm text-gray-600">${{ $product->precio }}</span>
+                        </div>
+
+                    </div>
+                </a>
+
+            @endforeach
+                <!-- fin card para productos -->
+
+
+{{-- {{--  --}}
                 <a href="#" class="col-span-1 xl:col-span-1">
 
                     <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center" style="background-image: url({{ asset('img/categorias/ropa.png') }})">
@@ -163,7 +192,7 @@
                         <span>Arte</span>
                     </div>
 
-                </a>
+                </a> 
             </div>
         </div>
     </div>
@@ -172,3 +201,4 @@
 
 
 @endsection
+{{-- </x-app-layout> --}}
