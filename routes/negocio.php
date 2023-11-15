@@ -20,6 +20,9 @@ Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->nam
 
     Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
     Route::post('/imagenes', [ProductController::class, 'storeImagen'])->name('imagen.storeImagen');
+
+    Route::get('/ajustes',[NegocioController::class,'settings'])->name('ajustes');
+    Route::put('/ajustes',[NegocioController::class,'updateSettings'])->name('ajustes.update');
 });
 
 /*

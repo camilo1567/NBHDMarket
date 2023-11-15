@@ -66,6 +66,47 @@ class NegocioController extends Controller
         //
     }
 
+    public function settings()
+    {
+        $user = auth()->user();
+        $settings = $user->settings;
+
+        $data = compact('settings');
+
+        return view('negocio.settings',$data);
+    }
+
+    public function updateSettings(Request $request)
+    {
+
+        if($request->hasFile('image')){
+
+            $this->validate($request,[
+                'image' => 'file',
+            ]);
+
+            //Storage::delete('img/fotos/' . Auth::user()->settings->foto_perfil);
+
+            $image = $request->file('image');
+
+            $name = time().$image->getClientOriginalName();
+
+            $image->storeAs('img/fotos/',$name,'public');
+
+            $path = 'img/fotos/'.$name;
+
+            $request['foto_perfil'] = $path;
+
+        }
+
+        $user = auth()->user();
+        $settings = $user->settings;
+
+        $settings->update($request->all());
+
+        return redirect()->route('negocio.ajustes')->with('success','Ajustes actualizados correctamente');
+    }
+
     public function data_filled()
     {
         $user = Auth::user();

@@ -74,22 +74,25 @@
             </div>
         </div>
 
-        <div class=" max-w-6xl mx-auto xl:px-0 mt-5">
-            <h2 class="text-2xl font-bold my-5">Ofertas</h2>
+        {{-- <div class=" max-w-6xl mx-auto xl:px-0 mt-5">
+            <h2 class="text-2xl font-bold my-5">Negocios</h2>
             <div class="col-span-1 xl:col-span-1">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
-                    </div>
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
-                    </div>
-                    <div class="w-full flex items-end justify-center pb-5 rounded xl:h-72 h-40 bg-cover bg-center"
-                        style="background-image: url({{ asset('img/categorias/ropa.png') }})">
-                    </div>
-                </div>
+                @foreach ($negocios as $negocio)
+                    <a href="{{ route('public.index', $negocio) }}">
+                        <div
+                            class="h-[520px] bg-white shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all 300ms p-2 rounded-lg mt-2">
+                            <img class="mx-auto mb-2 h-[400px] rounded" src="{{ asset('' . $negocio->foto_perfil) }}"
+                                alt="nombre tienda">
+                            <hr>
+                            <div class="font-sans mt-4 ml-2">
+                                <p class="font-bold text-gray-800 text-lg"> {{ $negocio->nombre }} </p>
+                            </div>
+
+                        </div>
+                    </a>
+                @endforeach
             </div>
-        </div>
+        </div> --}}
 
         <div class="s max-w-6xl mx-auto xl:px-0">
             <h2 class="text-2xl font-bold my-5">Productos</h2>
