@@ -25,21 +25,27 @@
 
 @section('content')
     <div class="mx-auto lg:px-4 px-4">
+            
         <div x-data="{
+        @foreach ($publicities as $publicity)
             images: [
-                { src: '{{ asset('img/publicidad/car1.png') }}', alt: 'Imagen 1' },
-                { src: '{{ asset('img/publicidad/car2.png') }}', alt: 'Imagen 2' },
+                { src: '{{ asset('storage/' . $publicity->imagen) }}', alt: 'Imagen 1' },
+                {{-- { src: '{{ asset('img/publicidad/car2.png') }}', alt: 'Imagen 2' },
                 { src: '{{ asset('img/publicidad/cell1.png') }}', alt: 'Imagen 3' },
                 { src: '{{ asset('img/publicidad/cell2.png') }}', alt: 'Imagen 4' },
-                { src: '{{ asset('img/publicidad/ele.png') }}', alt: 'Imagen 5' },
+                { src: '{{ asset('img/publicidad/ele.png') }}', alt: 'Imagen 5' }, --}}
             ],
+        @endforeach
             currentImage: 0,
             startCarousel() {
                 setInterval(() => {
                     this.currentImage = (this.currentImage + 1) % this.images.length;
                 }, 11000);
+
             }
-        }" x-init="startCarousel()" class="px-2">
+        }" 
+
+        x-init="startCarousel()" class="px-2">
             <div class="relative">
                 <div class="swiper-s">
                     <div class="swiper-wrapper">
@@ -73,6 +79,7 @@
                 </div>
             </div>
         </div>
+
 
         {{-- <div class=" max-w-6xl mx-auto xl:px-0 mt-5">
             <h2 class="text-2xl font-bold my-5">Negocios</h2>

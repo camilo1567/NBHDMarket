@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Publicity;
 
 class PublicController extends Controller
 {
@@ -13,9 +14,11 @@ class PublicController extends Controller
 
         // $negocios = User::where('user_id', $user_id)->where('is_store', 1)->get();
 
+        $publicities = Publicity::all();
+
         $products = Product::all();
 
-        $context = compact('products');
+        $context = compact('products', 'publicities');
 
         return view('public.index',$context);
 
