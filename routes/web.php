@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Negocio\NegocioController;
+use App\Http\Controllers\PolicyController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RedirectController;
@@ -24,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/',[PublicController::class,'index'])->name('public.index');
 
+
 Route::get('/dashboard',[RedirectController::class, 'toDashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -33,6 +35,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/about', [AboutController::class, 'index'])->name('elements.about');
+Route::get('/politicas-de-privacidad',[PolicyController::class,'index'])->name('elements.public.politicas');
+Route::get('/terminos-y-condiciones',[PolicyController::class,'condiciones'])->name('elements.public.condiciones');
 
 
 

@@ -20,4 +20,6 @@ class PublicController extends Controller
         return view('public.index',$context);
 
     }
+
+    
 }

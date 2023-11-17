@@ -59,10 +59,10 @@
                   <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
                   <ul class="text-gray-500 dark:text-gray-400 font-medium">
                       <li class="mb-4">
-                          <a href="#" class="hover:underline">Politica y privacidad</a>
+                          <a href="{{ route('elements.public.politicas') }}" class="hover:underline">Politica y privacidad</a>
                       </li>
                       <li>
-                          <a href="#" class="hover:underline">Terminos &amp; Condiciones</a>
+                          <a href="{{ route('elements.public.condiciones') }}" class="hover:underline">Términos &amp; Condiciones</a>
                       </li>
                   </ul>
               </div>
