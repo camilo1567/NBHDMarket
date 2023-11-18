@@ -62,4 +62,9 @@ class User extends Authenticatable implements Auditable
         return $this->hasMany(Ticket::class);
     }
 
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }
+
 }
