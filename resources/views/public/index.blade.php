@@ -1,14 +1,3 @@
-{{-- @php
-    $product = App\Models\Product::first();
-@endphp --}}
-
-
-{{-- <x-app-layout> --}}
-
-{{-- @php
-    $product = App\Models\Product::first();
-@endphp --}}
-
 @extends('layouts.public.app')
 
 @section('head')
@@ -25,17 +14,27 @@
 
 @section('content')
     <div class="mx-auto lg:px-4 px-4">
-            
+
         <div x-data="{
-        @foreach ($publicities as $publicity)
             images: [
-                { src: '{{ asset('storage/' . $publicity->imagen) }}', alt: 'Imagen 1' },
-                {{-- { src: '{{ asset('img/publicidad/car2.png') }}', alt: 'Imagen 2' },
-                { src: '{{ asset('img/publicidad/cell1.png') }}', alt: 'Imagen 3' },
-                { src: '{{ asset('img/publicidad/cell2.png') }}', alt: 'Imagen 4' },
-                { src: '{{ asset('img/publicidad/ele.png') }}', alt: 'Imagen 5' }, --}}
+
+            @foreach ($publicities as $publicity)
+
+                @if ($publicity->status == 1)
+
+                    { src: '{{ asset('storage/' . $publicity->imagen) }}', alt: '{{ $publicity->nombre }}' },
+
+                @else
+
+                    { src: '{{ asset('img/publicidad/car2.png') }}', alt: 'Imagen 2' },
+                    { src: '{{ asset('img/publicidad/cell1.png') }}', alt: 'Imagen 3' },
+                    { src: '{{ asset('img/publicidad/cell2.png') }}', alt: 'Imagen 4' },
+                    { src: '{{ asset('img/publicidad/ele.png') }}', alt: 'Imagen 5' },
+
+                @endif
+
+            @endforeach
             ],
-        @endforeach
             currentImage: 0,
             startCarousel() {
                 setInterval(() => {
@@ -43,7 +42,7 @@
                 }, 11000);
 
             }
-        }" 
+        }"
 
         x-init="startCarousel()" class="px-2">
             <div class="relative">
@@ -108,7 +107,7 @@
 
                 <!-- card para productos -->
                 @foreach ($products as $product)
-                    <a href="{{ route('public.index', $product) }}">
+                    <a href="{{ route('public.product', $product) }}">
                         <div
                             class="h-[520px] bg-white shadow-sm hover:shadow-lg hover:-translate-y-2 transition-all 300ms p-2 rounded-lg mt-2">
                             <img class="mx-auto mb-2 h-[400px] rounded" src="{{ asset('storage/' . $product->imagen) }}"
@@ -131,4 +130,3 @@
 
     <div class="h-[100px]"></div>
 @endsection
-{{-- </x-app-layout> --}}

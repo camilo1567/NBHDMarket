@@ -17,7 +17,21 @@ class Product extends Model
         'cantidad',
         'nombre',
         'imagen',
-        'descripcion'
+        'descripcion',
+        'subcategory_id'
     ];
 
+    public function subcategory()
+    {
+        return $this->belongsTo(Subcategory::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
 }

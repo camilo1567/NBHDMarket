@@ -20,6 +20,8 @@ Route::prefix('negocio')->middleware(['auth','data_filled','role:negocio'])->nam
     Route::resource('tickets', TicketController::class);
     Route::resource('publicities', PublicityController::class);
 
+    Route::get('/subcategories/{id}',[ProductController::class,'subcategories'])->name('subcategories');
+
     Route::get('/dashboard',[NegocioController::class, 'index'])->name('dashboard');
     Route::post('/imagenes', [ProductController::class, 'storeImagen'])->name('imagen.storeImagen');
 

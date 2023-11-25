@@ -67,4 +67,9 @@ class User extends Authenticatable implements Auditable
         return $this->hasMany(Message::class);
     }
 
+    public function products()
+    {
+        return $this->hasMany(Product::class);
+    }
+
 }

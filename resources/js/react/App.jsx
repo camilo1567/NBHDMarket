@@ -124,6 +124,7 @@ function App() {
                             <div key={index} className={`${message.from_user_id === user.id ? 'flex justify-end' : 'flex justify-start'}`}>
                                 <div className={`p-2 m-2 rounded shadow ${message.from_user_id === user.id ? 'bg-[#d9fdd3]' : 'bg-white'}`} style={{maxWidth: "80%"}}>
                                     <div>
+                                        {message.img_path && <img src={`${baseUrl}storage/${message.img_path}` } alt="Mensaje" className='w-[200px] h-[200px] rounded-lg' />}
                                         <div>{message.message}</div>
                                         <div className='text-[0.6rem] text-gray-500'>{message.time_ago}</div>
                                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Negocio;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class ProductController extends Controller
@@ -13,7 +14,7 @@ class ProductController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {        
+    {
         $user_id = Auth()->user()->id;
 
         $products = Product::where('user_id', $user_id)->get();
@@ -28,7 +29,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('negocio.products.create');
+
+        $categorias = Category::all();
+
+        $context = compact('categorias');
+
+        return view('negocio.products.create',$context);
     }
 
     /**
@@ -43,7 +49,9 @@ class ProductController extends Controller
             'precio' => 'required|integer',
             'cantidad' => 'required|integer|min:1',
             'descripcion' => 'required',
-            'archivo' => 'required|mimes:png,jpeg,jpg'
+            'archivo' => 'required|mimes:png,jpeg,jpg',
+            'category' => 'required',
+            'subcategory_id' => 'required'
         ]);
 
         $request['user_id'] = $user->id;
@@ -66,9 +74,14 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function subcategories($id)
     {
-        //
+
+        $category = Category::find($id);
+
+        // info($category->subcategories);
+
+        return response()->json($category->subcategories);
     }
 
     /**
@@ -76,7 +89,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        $data = compact('product');
+
+        $categorias = Category::all();
+
+        $data = compact('product','categorias');
 
         return view('negocio.products.edit', $data);
     }
@@ -84,7 +100,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    
+
     public function update(Request $request, Product $product)
     {
         $user = Auth::user();
@@ -94,7 +110,7 @@ class ProductController extends Controller
             'precio' => 'required|integer',
             'cantidad' => 'required|integer',
             'descripcion' => 'required',
-            'archivo' => 'mimes:png,jpeg,jpg'
+            'archivo' => 'mimes:png,jpeg,jpg',
         ]);
 
         $request['user_id'] = $user->id;

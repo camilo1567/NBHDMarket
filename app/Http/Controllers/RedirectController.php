@@ -14,9 +14,17 @@ class RedirectController extends Controller
 
             return redirect()->route('superadmin.dashboard');
 
-        }else if($user->hasRole('negocio')){
+        }
+
+        if($user->hasRole('negocio')){
 
             return redirect()->route('negocio.dashboard');
+
+        }
+
+        if($user->hasRole('cliente')){
+
+            return redirect()->route('cliente.dashboard');
 
         }
 

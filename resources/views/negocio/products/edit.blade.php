@@ -41,25 +41,21 @@
 
 
 
-            <div class="md:w-1/2">
+            <div class="grid gap-2 md:grid-cols-2">
 
                 {{ Aire::input('nombre', 'Nombre')->value($product->nombre) }}
-
-            </div>
-
-        </div>
-
-        <div class="md:flex gap-2">
-
-            <div class="w-full">
 
                 {{ Aire::input('precio', 'Precio')->value($product->precio) }}
 
                 {{ Aire::input('cantidad', 'Cantidad')->value($product->cantidad) }}
 
-                {{ Aire::textarea('descripcion', 'Descripcion')->value($product->descripcion) }}
+                {{ Aire::select(['' => 'Seleccione una categoria']+$categorias->pluck('nombre','id')->toArray(),'category','Categorias')->id('category') }}
+
+                {{ Aire::select([], 'subcategoria_id', 'Subcategorias')->id('subcategory') }}
 
             </div>
+
+            {{ Aire::textarea('descripcion', 'Descripcion')->value($product->descripcion) }}
 
         </div>
 
@@ -68,4 +64,28 @@
         </div>
 
         {{ Aire::close() }}
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $('#category').change(function() {
+        var categoryId = $(this).val();
+        var subcategorySelect = $('#subcategory');
+        subcategorySelect.empty();
+
+        if (!categoryId) {
+            return;
+        }
+
+        $.get('/negocio/subcategories/' + categoryId, function(data) {
+            console.log(data); // Imprime los datos recibidos en la consola
+            $.each(data, function(index, subcategory) {
+                subcategorySelect.append(new Option(subcategory.nombre, subcategory.id));
+            });
+        })
+        .fail(function(error) {
+            console.log(error); // Imprime cualquier error en la consola
+        });
+    });
+</script>
     @endsection

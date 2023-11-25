@@ -19,9 +19,12 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id')->nullable();
             $table->string('imagen')->nullable();
             $table->integer('precio')->nullable();
+            $table->unsignedBigInteger('subcategory_id')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
+
         });
     }
 

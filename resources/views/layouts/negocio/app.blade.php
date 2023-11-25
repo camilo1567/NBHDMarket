@@ -25,7 +25,13 @@
         <div>
             @include('elements.negocio.navigation',['titulo' => $__env->yieldContent('titulo')])
 
-            @include('elements.negocio.sidebar')
+            @role('negocio')
+                @include('elements.negocio.sidebar')
+            @endrole
+
+            @role('cliente')
+                @include('elements.cliente.sidebar')
+            @endrole
         </div>
 
         <div class="mt-4 sm:ml-64">

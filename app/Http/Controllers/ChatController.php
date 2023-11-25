@@ -14,7 +14,18 @@ class ChatController extends Controller
 
     public function index()
     {
-        return User::with('settings')->where('id', '!=', Auth::user()->id)->get();
+
+        if(Auth::user()->hasRole('negocio')){
+            $users = User::role('cliente')->with('settings')->where('id', '!=', Auth::user()->id)->get();
+        }
+
+        if(Auth::user()->hasRole('cliente')){
+            $users = User::role('negocio')->with('settings')->where('id', '!=', Auth::user()->id)->get();
+        }
+
+        //$users = User::with('settings')->where('id', '!=', Auth::user()->id)->get();
+
+        return $users;
     }
 
     public function user(){
@@ -23,12 +34,20 @@ class ChatController extends Controller
 
     public function message(Request $request){
 
-        $message = new Message;
-        $message->from_user_id = $request->user()->id;
-        $message->to_user_id = $request->to_user_id;
-        $message->message = $request->message;
+        if($request->message != null ){
+            $message = Message::create([
+                'from_user_id' => Auth::user()->id,
+                'to_user_id' => $request->to_user_id,
+                'message' => $request->message,
+            ]);
+        }
 
-        $message->save();
+        // $message = new Message;
+        // $message->from_user_id = $request->user()->id;
+        // $message->to_user_id = $request->to_user_id;
+        // $message->message = $request->message;
+
+        // $message->save();
 
         // // Pusher
         // $options = array('cluster' => 'mt1');

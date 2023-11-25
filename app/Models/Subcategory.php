@@ -18,6 +18,6 @@ class Subcategory extends Model implements Auditable
 
     public function category()
     {
-        $this->belongsTo(Category::class);
+        return $this->belongsTo(Category::class);
     }
 }
