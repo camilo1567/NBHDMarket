@@ -18,7 +18,8 @@ class Ticket extends Model implements Auditable
         'file',
         'respuesta',
         'status',
-        'fecha_cierre'
+        'fecha_cierre',
+        'type'
     ];
 
     public function user()

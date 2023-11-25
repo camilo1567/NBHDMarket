@@ -25,6 +25,11 @@
         {{ Aire::open()->route('negocio.tickets.store')->encType('multipart/form-data') }}
 
             <div class="mb-4">
+                <label for="tipo" class="label-edit">PQRS:</label>
+                {{ Aire::select(['Peticion' => 'Peticion','Queja' => 'Queja','Reclamo' => 'Reclamo','Sugerencia' => 'Sugerencia'],'type') }}
+            </div>
+
+            <div class="mb-4">
                 <label for="asunto" class="label-edit">Asunto:</label>
                 {{ Aire::input('asunto') }}
             </div>

@@ -43,6 +43,9 @@
                             <p class="text-gray-800 mb-4">
                                 Archivo: {{ $ticket->file ? 'Si' : 'No'  }}
                             </p>
+                            <p class="text-gray-800 mb-4">
+                                PQRS: {{ $ticket->type }}
+                            </p>
                             <div class="flex items-center justify-between">
                                 <span class="text-gray-500">
                                     Estado:

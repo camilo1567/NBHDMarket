@@ -42,7 +42,7 @@
                         @foreach ($tickets as $ticket)
                             <div class="bg-slate-100 rounded-lg shadow-lg p-6 ">
                                 <h2 class="text-lg font-semibold mb-2">
-                                    Tu número de ticket es: # 
+                                    Tu número de ticket es: #
                                     @if ($ticket->id < 10)
                                         00{{ $ticket->id }}
                                     @elseif ($ticket->id < 100)
@@ -60,6 +60,9 @@
                                 </p>
                                 <p class="text-gray-800 mb-4">
                                     Archivo: {{ $ticket->file ? 'Si' : 'No' }}
+                                </p>
+                                <p class="text-gray-800 mb-4">
+                                    PQRS: {{ $ticket->type }}
                                 </p>
                                 <div class="flex items-center justify-between">
                                     <span class="text-gray-500">

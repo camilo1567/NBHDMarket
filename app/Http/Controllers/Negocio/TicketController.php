@@ -48,6 +48,7 @@ class TicketController extends Controller
         $this->validate($request,[
             'asunto' => 'required|string|max:255',
             'descripcion' => 'required|string|max:255',
+            'type' => 'required',
         ]);
 
         if($request->hasFile('archivo')){
