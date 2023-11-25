@@ -51,9 +51,13 @@ class PublicController extends Controller
         return redirect()->back()->with('success', 'Mensaje enviado');
     }
 
-    public function negocios()
+    public function negocios(Request $request)
     {
-        $negocios = User::where('is_store', 1)->get();
+        $negocios = User::where('is_store', 1)->when($request->filled('q') && $request->q != 4, function ($q) use ($request){
+
+            $q->where('name', 'LIKE', "%".$request->q."%" );
+
+        })->paginate(10);
 
         $context = compact('negocios');
 

@@ -3,6 +3,19 @@
 @section('content')
 
     <div class=" p-4">
+
+        <form class="w-full mb-4" method="GET">
+            <div class="flex items-center">
+                <div class="p-2 text-gray-900 border border-gray-300 rounded-l-lg bg-gray-50">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </div>
+                <input value='{{ request()->q }}' name="q" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-r-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500" placeholder="Buscar por Nombre">
+            </div>
+        </form>
+
+
         @foreach ($negocios as $negocio)
             <a href="{{ route('public.negocio',$negocio) }}">
                 <div class="bg-white rounded-lg flex items-center gap-4 overflow-hidden shadow-md p-4 mb-4">
@@ -51,7 +64,10 @@
                     </div>
                 </div>
             </a>
+
         @endforeach
+
+        {{ $negocios->links() }}
     </div>
 
 @endsection
