@@ -13,6 +13,8 @@ class Contact extends Model
         "nombre",
         "apellido",
         "email",
-        "telefono"
+        "telefono",
+        'foto',
+        'descripcion'
     ];
 }

@@ -35,14 +35,26 @@ class ContactController extends Controller
             'nombre' => 'required|string|max:40',
             'apellido' => 'required|string|max:40',
             'email' => 'required|email|max:50',
-            'telefono' => 'required|unique:contacts,telefono'
+            'telefono' => 'required|unique:contacts,telefono',
+            'image' => 'required',
+            'descripcion' => 'required|max:255'
         ]);
+
+        $image = $request->file('image');
+
+        $name = time().$image->getClientOriginalName();
+
+        $image->storeAs('img/fotos/',$name,'public');
+
+        $path = 'img/fotos/'.$name;
 
         $contact = Contact::create([
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'email' => $request->email,
-            'telefono' => $request->telefono
+            'telefono' => $request->telefono,
+            'foto' => $path,
+            'descripcion' => $request->descripcion
         ]);
 
         return redirect()->route('superadmin.contacts.index')->with('success', 'Contacto creado con éxito');
@@ -75,14 +87,35 @@ class ContactController extends Controller
             'nombre' => 'required|unique:contacts,nombre,'.$contact->id.'|max:40',
             'apellido' => 'required|string|max:40',
             'email' => 'required|email|max:50',
-            'telefono' => 'required|unique:contacts,telefono'
+            'telefono' => 'required|unique:contacts,telefono',
+            'descripcion' => 'required|max:255'
         ]);
+
+        $path = '';
+
+        if($request->hasFile('image')){
+
+            $this->validate($request,[
+                'image' => 'file',
+            ]);
+
+            $image = $request->file('image');
+
+            $name = time().$image->getClientOriginalName();
+
+            $image->storeAs('img/fotos/',$name,'public');
+
+            $path = 'img/fotos/'.$name;
+
+        }
 
         $contact->update([
             'nombre' => $request->nombre,
             'apellido' => $request->apellido,
             'email' => $request->email,
-            'telefono' => $request->telefono
+            'telefono' => $request->telefono,
+            'foto' => $path,
+            'descripcion' => $request->descripcion
         ]);
 
         return redirect()->route('superadmin.contacts.index')->with('success', 'Contacto actualizado con éxito');

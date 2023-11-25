@@ -21,9 +21,11 @@
 
     <div class="p-6 bg-white rounded-lg">
 
-        {{ Aire::open()->route('superadmin.contacts.store') }}
+        {{ Aire::open()->route('superadmin.contacts.store')->encType('multipart/form-data') }}
 
         <div class="grid gap-6 md:grid-cols-2">
+
+                {{ Aire::file('image','Foto')->class('w-full') }}
 
                 {{ Aire::input('nombre','Nombre') }}
 
@@ -33,6 +35,10 @@
 
                 {{ Aire::input('telefono','Telefono') }}
 
+        </div>
+
+        <div>
+            {{ Aire::textarea('descripcion','Descripcion') }}
         </div>
 
         <div class="flex justify-end py-2">

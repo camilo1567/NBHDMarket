@@ -23,11 +23,17 @@
 
         <div class="grid gap-2 md:grid-cols-2">
 
-                {{ Aire::input('nombre','Nombre')->value($contact->nombre) }}
-                {{ Aire::input('apellido','Apellido')->value($contact->apellido) }}
-                {{ Aire::input('email','Email')->value($contact->email) }}
-                {{ Aire::input('telefono','Telefono')->value($contact->telefono) }}
+            {{ Aire::file('image')->class('w-full') }}
 
+            {{ Aire::input('nombre','Nombre')->value($contact->nombre) }}
+            {{ Aire::input('apellido','Apellido')->value($contact->apellido) }}
+            {{ Aire::input('email','Email')->value($contact->email) }}
+            {{ Aire::input('telefono','Telefono')->value($contact->telefono) }}
+
+        </div>
+
+        <div>
+            {{ Aire::textarea('descripcion','Descripcion')->value($contact->descripcion) }}
         </div>
 
         <div class="flex justify-end py-2">

@@ -7,7 +7,7 @@
             <h1 class="text-3xl text-start font-bold mb-4 pb-4">Sobre Nosotros</h1>
 
             <div
-                class="bg-white rounded-lg text-gray-700 hover:text-white shadow-lg hover:bg-blue-700 hover:-translate-y-2 transition duration-300 p-6">
+                class="bg-white rounded-lg text-gray-700  shadow-lg p-6">
 
                 <h1 class="text-3xl text-center font-bold pb-4 drop-shadow-sm">Nuestro slogan</h1>
 
@@ -47,29 +47,23 @@
             <!-- Side Section -->
 
             <div
-                class="h-[500px] bg-white rounded-lg text-gray-700 hover:text-white shadow-lg hover:bg-blue-700 hover:-translate-y-2 transition duration-300 p-6">
+                class="h-[500px] bg-white rounded-lg text-gray-700  shadow-lg p-6">
 
                 <h1 class="text-3xl text-center font-bold pb-4 drop-shadow-sm">Contactanos</h1>
 
-                <div class="grid grid-cols-4 items-center h-[250px] p-4 gap-8 text-center">
-                    
-                        <div class="flex flex-col  items-center pb-6">
-                            <div class="rounded-full h-[140px] w-[140px] bg-violet-700 border-white mb-2"></div>
-                            <h1 class="text-3xl font-bold">Juan Camilo Horta</h1>
+                <div class="grid grid-cols-4 items-center h-[250px] p-4 gap-8">
+
+                    @foreach ($contactos as $contacto)
+                        <div class="items-center pb-6">
+                            <div class="flex justify-center mb-4">
+                                <img class="rounded-full w-[200px] h-[200px] bg-slate-100" src="{{ asset('storage/'.$contacto->foto) }}" alt="">
+                            </div>
+                            <h1 class="text-3xl font-bold">{{ $contacto->nombre }} {{ $contacto->apellido }}</h1>
+                            <p><strong>Descripcion:</strong> {{ $contacto->descripcion }}</p>
+                            <p><strong>Numero: </strong> {{ $contacto->telefono }}</p>
                         </div>
-                    
-                    <div class="flex flex-col items-center">
-                        <div class="rounded-full h-[140px] w-[140px] bg-violet-700 border-white mb-2"></div>
-                        <h1 class="text-3xl font-bold">Miguel Angel Martinez Gomez</h1>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="rounded-full h-[140px] w-[140px] bg-violet-700 border-white mb-2"></div>
-                        <h1 class="text-3xl font-bold">Miguel Angel Usma Mosquera</h1>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="rounded-full h-[140px] w-[140px] bg-violet-700 border-white mb-2"></div>
-                        <h1 class="text-3xl font-bold">Angel Yesid Campiño Vidal</h1>
-                    </div>
+                    @endforeach
+
                 </div>
             </div>
         </div>
