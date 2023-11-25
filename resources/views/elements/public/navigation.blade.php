@@ -51,6 +51,15 @@
                             <a href="{{ route('dashboard') }}"
                                 class="block md:hidden py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Dashboard</a>
                         @endrole
+
+                        @role('cliente')
+                            <div class="hidden md:block">
+                                @include('elements.negocio.menu')
+                            </div>
+
+                            <a href="{{ route('dashboard') }}"
+                                class="block md:hidden py-2 pl-3 pr-4 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0">Dashboard</a>
+                        @endrole
                     @else
                         <a href="{{ route('login') }}"
                             class="block py-2 pl-3 pr-4 text-gray-900 md:px-3 md:py-2 md:font-bold md:text-center md:text-white md:bg-blue-400 md:hover:bg-blue-500 md:rounded-lg">Iniciar

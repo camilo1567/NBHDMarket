@@ -53,6 +53,8 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/cliente/dashboard',[ClienteController::class,'index'])->name('cliente.dashboard');
 
+    Route::post('/comentario/{product}',[PublicController::class,'comentario'])->name('product.comentario');
+
 });
 
 Route::get('/publico/negocios',[PublicController::class,'negocios'])->name('public.negocios');

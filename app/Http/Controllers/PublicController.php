@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Message;
 use App\Models\User;
 use App\Models\Product;
@@ -72,6 +73,22 @@ class PublicController extends Controller
         $context = compact('negocio');
 
         return view('public.negocio',$context);
+    }
+
+    public function comentario(Request $request,Product $product)
+    {
+        $request->validate([
+            'comentario' => 'max:255'
+        ]);
+
+        Comment::create([
+            'user_id' => Auth::user()->id,
+            'product_id' => $product->id,
+            'comentario' => $request->comentario,
+        ]);
+
+        return redirect()->back()->with('success', 'Comentario enviado');
+
     }
 
 }

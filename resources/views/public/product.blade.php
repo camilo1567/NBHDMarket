@@ -30,12 +30,37 @@
 <div class="m-2 py-4">
 
     <div class="bg-white p-4 rounded-lg">
-        <h2 class="text-3xl font-semibold">Comentarios:</h2>
+        <h2 class="text-3xl font-semibold mb-6">Comentarios:</h2>
 
-        @role('cliente')
+        <div class="{{ $product->comments->count() > 0 ? '' : '' }}">
 
+            @if ($product->comments->count() > 0)
+                @foreach ($product->comments as $comentario)
+                    @if($comentario->user)
+                        <div class="flex flex-col gap-2 p-2 border-b border-gray-200">
+                            <div class="flex justify-between items-center">
+                                <div class="flex gap-1 items-center">
+                                    <div class="rounded-full">
+                                        <img class="w-10 h-10" src="{{ asset('storage/'.$comentario->user->settings->foto_perfil) }}" alt="">
+                                    </div>
+                                    <p class="text-xl font-semibold">{{ $comentario->user->name }}</p>
+                                </div>
+                                <p class="text-xl">{{ $comentario->created_at->diffForHumans() }}</p>
+                            </div>
+                            <p class="text-xl pl-10">{{ $comentario->comentario }}</p>
+                        </div>
+                    @endif
+                @endforeach
+            @endif
+        </div>
 
-        @endrole
+        {{ Aire::open()->route('product.comentario',$product) }}
+
+            <div class="mt-8 gap-2 items-center w-full">
+                {{ Aire::input('comentario')->placeholder('Escribe un comentario...') }}
+            </div>
+
+        {{ Aire::close() }}
     </div>
 
 </div>
