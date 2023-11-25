@@ -47,20 +47,24 @@
             <!-- Side Section -->
 
             <div
-                class="h-[500px] bg-white rounded-lg text-gray-700  shadow-lg p-6">
+                class=" bg-white rounded-lg text-gray-700  shadow-lg p-6">
 
-                <h1 class="text-3xl text-center font-bold pb-4 drop-shadow-sm">Contactanos</h1>
+                <h1 class="text-3xl text-center font-bold pb-4 drop-shadow-sm">Contactos</h1>
 
-                <div class="grid grid-cols-4 items-center h-[250px] p-4 gap-8">
+                <div class="grid md:grid-cols-2 items-center overflow-y-hidden p-4 gap-8">
 
                     @foreach ($contactos as $contacto)
-                        <div class="items-center pb-6">
-                            <div class="flex justify-center mb-4">
-                                <img class="rounded-full w-[200px] h-[200px] bg-slate-100" src="{{ asset('storage/'.$contacto->foto) }}" alt="">
+                        <div class="items-center pb-6 px-4">
+                            <div class="flex justify-center mb-6">
+                                <img class="rounded-full w-[250px] h-[250px] bg-slate-100" src="{{ asset('storage/'.$contacto->foto) }}" alt="">
                             </div>
-                            <h1 class="text-3xl font-bold">{{ $contacto->nombre }} {{ $contacto->apellido }}</h1>
-                            <p><strong>Descripcion:</strong> {{ $contacto->descripcion }}</p>
-                            <p><strong>Numero: </strong> {{ $contacto->telefono }}</p>
+                            <div class="flex justify-center">
+                                <div>
+                                    <h1 class="text-3xl font-bold mb-4 text-center">{{ $contacto->nombre }} {{ $contacto->apellido }}</h1>
+                                    <p class="text-sm mb-4"><strong>Descripcion:</strong> {{ $contacto->descripcion }}</p>
+                                    <p class="text-sm mb-4"><strong>Numero: </strong> {{ $contacto->telefono }}</p>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
 
