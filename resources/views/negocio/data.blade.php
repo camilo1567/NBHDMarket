@@ -3,7 +3,7 @@
 
     <div class="flex justify-center md:p-4 bg-gray-100">
         <div class="bg-white m-4 w-full rounded-lg">
-            {{ Aire::open()->route('negocio.datacomplete',$user) }}
+            {{ Aire::open()->route('negocio.datacomplete',$user)->encType('multipart/form-data') }}
 
                 <div class="text-center text-xl md:text-2xl py-2 font-bold my-4 border-b border-black">
                     <h1>DATOS PARA SU NEGOCIO</h1>

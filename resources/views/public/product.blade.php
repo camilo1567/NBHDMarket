@@ -41,7 +41,7 @@
                             <div class="flex justify-between items-center">
                                 <div class="flex gap-1 items-center">
                                     <div class="rounded-full">
-                                        <img class="w-10 h-10" src="{{ asset('storage/'.$comentario->user->settings->foto_perfil) }}" alt="">
+                                        <img class="w-10 h-10 rounded-full" src="{{ asset('storage/'.$comentario->user->settings->foto_perfil) }}" alt="">
                                     </div>
                                     <p class="text-xl font-semibold">{{ $comentario->user->name }}</p>
                                 </div>

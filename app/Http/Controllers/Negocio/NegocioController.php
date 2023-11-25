@@ -124,11 +124,21 @@ class NegocioController extends Controller
             'nombre' => 'required',
             'direccion' => 'required',
             'descripcion' => 'required|max:255',
+            'imagen1' => 'file',
         ]);
 
         $user_settings = UserSetting::whereUserId($user->id)->first();
 
+        $image = $request->file('imagen1');
+
+        $name = time().$image->getClientOriginalName();
+
+        $image->storeAs('img/fotos/',$name,'public');
+
+        $path = 'img/fotos/'.$name;
+
         $user_settings->update([
+            'foto_perfil' => $path,
             'nombre' => $request->nombre,
             'direccion' => $request->direccion,
             'contacto' => $request->contacto,
